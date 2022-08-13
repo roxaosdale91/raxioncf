@@ -124,3 +124,158 @@ MonoBehaviour:
       codePaths:
       - Assets/Plugins/GameCreator/Stats/
       dataPaths: []
+  - module:
+      moduleID: com.ninjutsugames.examples.photon
+      version:
+        major: 0
+        minor: 3
+        patch: 6
+      displayName: Photon Network Examples
+      description: Examples for the Photon Module
+      category: Module
+      dependencies:
+      - moduleID: com.ninjutsugames.module.photon
+        version:
+          major: 0
+          minor: 3
+          patch: 6
+      tags:
+      - module
+      - photon
+      - multiplayer
+      - online
+      authorName: Hjupter Cerrud
+      authorMail: hjupter@ninjutsugames.com
+      authorSite: https://njg.gitbook.io/gc-modules/photon-network/photon-network
+      includesData: 1
+      codePaths:
+      - Assets/Ninjutsu Games/GameCreator Modules/PhotonExamples/
+      dataPaths:
+      - Assets/Plugins/GameCreatorData/Photon/Resources/GameCreator/Databases
+  - module:
+      moduleID: com.ninjutsugames.examples.photon-melee
+      version:
+        major: 0
+        minor: 1
+        patch: 2
+      displayName: Photon Melee Examples
+      description: Examples for the Photon Melee
+      category: Module
+      dependencies:
+      - moduleID: com.ninjutsugames.module.photon
+        version:
+          major: 0
+          minor: 3
+          patch: 5
+      - moduleID: com.gamecreator.module.melee
+        version:
+          major: 0
+          minor: 1
+          patch: 5
+      - moduleID: com.ninjutsugames.module.photon-melee
+        version:
+          major: 0
+          minor: 1
+          patch: 1
+      tags:
+      - module
+      - photon
+      - multiplayer
+      - online
+      - melee
+      authorName: Hjupter Cerrud
+      authorMail: hjupter@ninjutsugames.com
+      authorSite: https://njg.gitbook.io/gc-modules/photon-network/photon-network
+      includesData: 1
+      codePaths:
+      - Assets/Ninjutsu Games/GameCreator Modules/PhotonMeleeExamples/
+      dataPaths:
+      - Assets/Plugins/GameCreatorData/Melee/
+  - module:
+      moduleID: com.ninjutsugames.examples.photon-stats
+      version:
+        major: 0
+        minor: 3
+        patch: 4
+      displayName: Photon Network Stats Examples
+      description: Examples for the Photon Module + Stats Module
+      category: Module
+      dependencies:
+      - moduleID: com.ninjutsugames.module.photon
+        version:
+          major: 0
+          minor: 3
+          patch: 4
+      - moduleID: com.gamecreator.module.stats
+        version:
+          major: 1
+          minor: 1
+          patch: 3
+      tags:
+      - module
+      - photon
+      - multiplayer
+      - online
+      authorName: Hjupter Cerrud
+      authorMail: hjupter@ninjutsugames.com
+      authorSite: https://njg.gitbook.io/gc-modules/photon-network/photon-network
+      includesData: 0
+      codePaths:
+      - Assets/Ninjutsu Games/GameCreator Modules/PhotonExamples-Stats/
+      dataPaths:
+      - Assets/Plugins/GameCreatorData/Photon/Resources/GameCreator/Databases
+  - module:
+      moduleID: com.ninjutsugames.module.photon
+      version:
+        major: 0
+        minor: 3
+        patch: 6
+      displayName: Photon Network
+      description: The easiest way to add multiplayer functionality to your game.
+      category: Module
+      dependencies: []
+      tags:
+      - module
+      - photon
+      - multiplayer
+      - online
+      authorName: Hjupter Cerrud
+      authorMail: hjupter@ninjutsugames.com
+      authorSite: https://njg.gitbook.io/gc-modules
+      includesData: 0
+      codePaths:
+      - Assets/Ninjutsu Games/GameCreator Modules/Photon/
+      dataPaths: []
+  - module:
+      moduleID: com.ninjutsugames.module.photon-melee
+      version:
+        major: 0
+        minor: 1
+        patch: 2
+      displayName: Photon Melee
+      description: Integration of Photon Module with GC's Melee module
+      category: Module
+      dependencies:
+      - moduleID: com.ninjutsugames.module.photon
+        version:
+          major: 0
+          minor: 3
+          patch: 5
+      - moduleID: com.gamecreator.module.melee
+        version:
+          major: 0
+          minor: 1
+          patch: 5
+      tags:
+      - module
+      - photon
+      - multiplayer
+      - online
+      - melee
+      authorName: Hjupter Cerrud
+      authorMail: hjupter@ninjutsugames.com
+      authorSite: https://njg.gitbook.io/gc-modules/photon-network/photon-network
+      includesData: 0
+      codePaths:
+      - Assets/Ninjutsu Games/GameCreator Modules/PhotonMelee/
+      dataPaths: []
