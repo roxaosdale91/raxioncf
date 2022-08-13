@@ -23,10 +23,10 @@ MonoBehaviour:
   defaultShield: {fileID: 11400000, guid: cb656d9c131df09499ffcbbd7d814c00, type: 2}
   characterState: {fileID: 11400000, guid: 1bdbde0638facfc4683e15f122b6f8c4, type: 2}
   characterMask: {fileID: 0}
-  prefab: {fileID: 195414, guid: e853eadc5f7696b45a865c55959f923b, type: 3}
+  prefab: {fileID: 165046, guid: 4170b399e985d6549a784678829905ad, type: 3}
   attachment: 18
-  positionOffset: {x: -0.853, y: 0.868, z: -0.248}
-  rotationOffset: {x: 351.3865, y: 354.41565, z: 221.34897}
+  positionOffset: {x: 0.065, y: -0.252, z: 0.03}
+  rotationOffset: {x: 344.00113, y: 16.55351, z: 27.762875}
   audioSheathe: {fileID: 8300000, guid: ec5b102aa3bfd4afabe344f209d29ef0, type: 3}
   audioDraw: {fileID: 8300000, guid: 9f819c03d98d04eed982c4633d9a8479, type: 3}
   audioImpactNormal: {fileID: 8300000, guid: 00f967e54adc343b1a07b49f4b7514c7, type: 3}
@@ -47,32 +47,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f0c19687254ac41c3b58c0831104f70f, type: 2}
   combos:
   - combo: 00000000
-    condition: 3
-    meleeClip: {fileID: 11400000, guid: 899fd6e838050424f969ab3d0ea1c250, type: 2}
-    isEnabled: 1
-  - combo: 00000000
-    condition: 1
-    meleeClip: {fileID: 11400000, guid: ddbab4136314d4c3fa018d17ddb6336e, type: 2}
-    isEnabled: 1
-  - combo: 00000000
-    condition: 7
-    meleeClip: {fileID: 11400000, guid: 6a1998bfdd4134b60998de41469a4d16, type: 2}
-    isEnabled: 1
-  - combo: 00000000
-    condition: 6
-    meleeClip: {fileID: 11400000, guid: 5d70869a08c5e488c8ce44010e913a9d, type: 2}
-    isEnabled: 1
-  - combo: 00000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: 6614fcd05edca4ce68c841956936d2a5, type: 2}
+    meleeClip: {fileID: 11400000, guid: 7a538d66e56c8e74b8a41c39ec5ea3d2, type: 2}
     isEnabled: 1
   - combo: 0000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: efbea7472b3f84aceb7c26959dacbbbe, type: 2}
+    meleeClip: {fileID: 11400000, guid: ff76c4d0c256e434b80610451263c44e, type: 2}
     isEnabled: 1
   - combo: 000000000000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: ab7574fd7695149e39c974ee435cb36a, type: 2}
+    meleeClip: {fileID: 11400000, guid: 49a2fcb64f29a734eb706607dd08d66c, type: 2}
+    isEnabled: 1
+  - combo: 00000000000000000000000000000000
+    condition: 0
+    meleeClip: {fileID: 11400000, guid: c3db18addada3594e9362b23c839227e, type: 2}
     isEnabled: 1
   prefabImpactNormal: {fileID: 4329036519906242892, guid: 9408437927dbd43d6bca1f23faa3aba8,
     type: 3}
