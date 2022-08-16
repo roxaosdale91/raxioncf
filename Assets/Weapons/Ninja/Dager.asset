@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 174e3c307f7474e6fa3b8acd263a757e, type: 3}
-  m_Name: Hammer
+  m_Name: Dager
   m_EditorClassIdentifier: 
   weaponName:
-    content: Hammer
+    content: Sword
     postProcess: 0
     translationID: 0
   weaponDescription:
-    content: Super Hammer
+    content: Super sword
     postProcess: 0
     translationID: 0
-  defaultShield: {fileID: 11400000, guid: cb656d9c131df09499ffcbbd7d814c00, type: 2}
-  characterState: {fileID: 11400000, guid: 1bdbde0638facfc4683e15f122b6f8c4, type: 2}
+  defaultShield: {fileID: 11400000, guid: 36702f652de1e5c47bbfc50c772942e1, type: 2}
+  characterState: {fileID: 11400000, guid: cbc841a164b33124d941283a321bbfb6, type: 2}
   characterMask: {fileID: 0}
-  prefab: {fileID: 191070, guid: b1a73d9e29e72e147a50663f2f8ddac7, type: 3}
+  prefab: {fileID: 138024, guid: 6d137d44990918a48bfc447d3dda3796, type: 3}
   attachment: 18
-  positionOffset: {x: 27.114492, y: 8.95735, z: -26.173458}
-  rotationOffset: {x: 20.556217, y: 62.029175, z: 279.97858}
+  positionOffset: {x: 8.400221, y: 4.3997307, z: 4.3002725}
+  rotationOffset: {x: 347.17703, y: 69.966, z: 271.76288}
   audioSheathe: {fileID: 8300000, guid: ec5b102aa3bfd4afabe344f209d29ef0, type: 3}
   audioDraw: {fileID: 8300000, guid: 9f819c03d98d04eed982c4633d9a8479, type: 3}
   audioImpactNormal: {fileID: 8300000, guid: 00f967e54adc343b1a07b49f4b7514c7, type: 3}
@@ -48,19 +48,15 @@ MonoBehaviour:
   combos:
   - combo: 00000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: 7a538d66e56c8e74b8a41c39ec5ea3d2, type: 2}
+    meleeClip: {fileID: 11400000, guid: f02ccfe6d98fd914e8d9f250abe346ce, type: 2}
     isEnabled: 1
   - combo: 0000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: ff76c4d0c256e434b80610451263c44e, type: 2}
+    meleeClip: {fileID: 11400000, guid: 9c29d27f9ac748444bf5fd31a4dcd334, type: 2}
     isEnabled: 1
   - combo: 000000000000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: 49a2fcb64f29a734eb706607dd08d66c, type: 2}
-    isEnabled: 1
-  - combo: 00000000000000000000000000000000
-    condition: 0
-    meleeClip: {fileID: 11400000, guid: c3db18addada3594e9362b23c839227e, type: 2}
+    meleeClip: {fileID: 11400000, guid: 64531151eb1a8e64bb655611932bc766, type: 2}
     isEnabled: 1
   prefabImpactNormal: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
     type: 3}

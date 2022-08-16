@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f84d575e15c40443894df03f985f2eed, type: 3}
-  m_Name: SwordShield
+  m_Name: DaggerShield
   m_EditorClassIdentifier: 
   shieldName:
     content: Shield Name
@@ -20,10 +20,10 @@ MonoBehaviour:
     content: Shield Description
     postProcess: 0
     translationID: 0
-  prefab: {fileID: 171342, guid: e6e095024649b0149836be3d122bd184, type: 3}
+  prefab: {fileID: 0}
   attachment: 17
-  positionOffset: {x: -0.02, y: 0.02, z: -0.165}
-  rotationOffset: {x: 291.47382, y: 272.79114, z: 244.34448}
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
   perfectBlockClip: {fileID: 11400000, guid: d63237cf1eceb4783b1ede61886b4e6f, type: 2}
   blockingHitReaction:
   - {fileID: 11400000, guid: bfc7689a2bf5241a28a55e48a53afd38, type: 2}
@@ -33,7 +33,7 @@ MonoBehaviour:
     type: 2}
   airbornPerfectBlockReaction: {fileID: 11400000, guid: 3deaaf5926fd54b608596e9d5526322f,
     type: 2}
-  defendState: {fileID: 11400000, guid: 216d9e9ca439ef8489343f75ce88fda9, type: 2}
+  defendState: {fileID: 11400000, guid: a2c1795e0d2748e4dab68b23c4688615, type: 2}
   defendMask: {fileID: 0}
   lowerBodyRotation: 0
   defenseAngle:

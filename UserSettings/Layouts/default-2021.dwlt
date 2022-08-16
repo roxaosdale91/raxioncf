@@ -45,12 +45,12 @@ MonoBehaviour:
     height: 403
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
   - {fileID: 16}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 155
+  controlID: 117
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 624
     height: 904
-  m_MinSize: {x: 275, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -146,8 +146,8 @@ MonoBehaviour:
     y: 0
     width: 756
     height: 1307
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 117
+  controlID: 165
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -392,7 +392,7 @@ MonoBehaviour:
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 109
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: GlobalObjectId_V1-3-3a10e05ddf87ab142a9becd0aa854b38-11400000-0
   m_InspectorMode: 0
 --- !u!114 &16
@@ -437,22 +437,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Weapons/Sword and Shield
+    - Assets/Resources
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Weapons/Sword and Shield
+  - Assets/Resources
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\rxsdle\Documents\raxion
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: eed00000
-    m_LastClickedID: 53486
-    m_ExpandedIDs: 000000003e740000427400004474000046740000487400004a7400004c7400004e7400009474000000ca9a3b
+    scrollPos: {x: 0, y: 70}
+    m_SelectedIDs: 12120100
+    m_LastClickedID: 70162
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d41101001c12010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -480,7 +480,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e740000
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d4110100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -511,18 +511,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: States
-      m_OriginalName: States
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 29842
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 2}
     m_CreateAssetUtility:
@@ -578,7 +578,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Blink
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
@@ -593,7 +593,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f06f0000
     m_LastClickedID: 28656
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e740000
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d4110100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -621,7 +621,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e740000
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d4110100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -698,10 +698,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 849.60004
-    y: 752
-    width: 746
-    height: 447.40002
+    x: 1430
+    y: 977
+    width: 1252
+    height: 382
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -719,22 +719,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/States
+    - Assets/Weapons/Sword and Shield
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/States
+  - Assets/Weapons/Sword and Shield
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\rxsdle\Documents\raxion
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 00700000
-    m_LastClickedID: 28672
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e740000
+    scrollPos: {x: 0, y: 70}
+    m_SelectedIDs: 1e120100
+    m_LastClickedID: 70174
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d41101001c12010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -762,7 +762,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e740000
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d4110100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -787,8 +787,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 907c0900
-    m_LastClickedInstanceID: 621712
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -860,7 +860,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Frank_Slash_Pack/Assets/Animations/Frank_SlashPack_Warrior/FBX Animation/In_Place
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
@@ -875,7 +875,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: c83a0900
     m_LastClickedID: 604872
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e740000
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d4110100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -903,7 +903,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e740000
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d4110100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1001,22 +1001,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Frank_Slash_Pack/Assets/Animations/Frank_SlashPack_2Handed/FBX_Animation/In_Place
+    - Assets/JMO Assets/Cartoon FX Remaster/CFXR Prefabs/Misc
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Frank_Slash_Pack/Assets/Animations/Frank_SlashPack_2Handed/FBX_Animation/In_Place
+  - Assets/JMO Assets/Cartoon FX Remaster/CFXR Prefabs/Misc
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\rxsdle\Documents\raxion
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 4.5999756}
-    m_SelectedIDs: 66740000
-    m_LastClickedID: 29798
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e74000000ca9a3b
+    scrollPos: {x: 0, y: 102}
+    m_SelectedIDs: 48160100
+    m_LastClickedID: 71240
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d4110100fe110100381501003c1501003e15010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1044,7 +1044,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e74000040740000427400004474000046740000487400004a7400004c7400004e740000
+    m_ExpandedIDs: 00000000c4110100c6110100c8110100ca110100cc110100ce110100d0110100d2110100d4110100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000040990500ee9e050080ad0500929c0500fe9a0500eab005003cb60500f8ae05008e9a050004aa0500449a050018a20500d09b0500cab00500d2a30500deee0000faf3000056de00009ae50000cae40000d6e50000e8bb0000267500009892000072920000d6930000ea930000f8740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1174,23 +1174,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 26120100
       m_LastClickedID: 0
-      m_ExpandedIDs: 36fbffff086f00003a6f00005e70000082700000be7000004a710000
+      m_ExpandedIDs: 30fbffffd2780000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: hpHUD
-        m_OriginalName: hpHUD
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -8328
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -1410,7 +1410,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Particles
@@ -1426,9 +1426,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 1.97, z: 0}
+    m_Target: {x: -46.673706, y: 2.9132562, z: -167.61462}
     speed: 2
-    m_Value: {x: 0, y: 1.97, z: 0}
+    m_Value: {x: -46.673706, y: 2.9132562, z: -167.61462}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1457,17 +1457,17 @@ MonoBehaviour:
       m_Size: {x: 1, y: 1}
     yGrid:
       m_Fade:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -1475,13 +1475,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: -0.04390884, y: 0.9267128, z: -0.11456416, w: -0.3551797}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0.04390879, y: 0.9267118, z: -0.11456404, w: -0.3551793}
   m_Size:
-    m_Target: 2.1031406
+    m_Target: 2.0648487
     speed: 2
-    m_Value: 2.1031406
+    m_Value: 2.0648487
   m_Ortho:
     m_Target: 1
     speed: 2
