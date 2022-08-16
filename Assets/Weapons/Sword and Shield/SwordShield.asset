@@ -103,7 +103,7 @@ MonoBehaviour:
   perfectBlockWindow: 0
   audioBlock: {fileID: 0}
   audioPerfectBlock: {fileID: 0}
-  prefabImpactBlock: {fileID: 4329036519906242892, guid: cd4c04229338348b2b653790e4ca1042,
+  prefabImpactBlock: {fileID: 7680900537556279518, guid: 969c21bf3235bf74fbd2574a18ace876,
     type: 3}
   prefabImpactPerfectBlock: {fileID: 4329036519906242892, guid: d148929d442b347c0bf239d9015c7d2c,
     type: 3}

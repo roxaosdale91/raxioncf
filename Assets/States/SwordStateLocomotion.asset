@@ -16,7 +16,7 @@ MonoBehaviour:
   rtcSimple: {fileID: 8228467286411832132}
   rtcLocomotion: {fileID: 1163659872828763918}
   rtcOther: {fileID: 0}
-  enterClip: {fileID: 7400000, guid: 818259a8af2e0a7499a59de2f4e9e89e, type: 3}
+  enterClip: {fileID: 0}
   enterAvatarMask: {fileID: 0}
   exitClip: {fileID: 0}
   exitAvatarMask: {fileID: 0}
