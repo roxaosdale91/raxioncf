@@ -88,7 +88,7 @@ MonoBehaviour:
   allowOrbitInput: 1
   orbitInput: 0
   orbitSpeed: 15
-  maxPitch: 40
+  maxPitch: 50
   sensitivity:
     optionIndex: 0
     value: {x: 5, y: 5}
