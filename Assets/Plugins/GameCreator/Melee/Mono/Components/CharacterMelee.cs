@@ -387,6 +387,7 @@
         public void StopAttack()
         {
             this.comboSystem.Stop();
+            if(this != null && this.currentMeleeClip != null) this.currentMeleeClip.Stop(this);
         }
 
         public int GetCurrentPhase()

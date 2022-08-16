@@ -118,6 +118,20 @@
             this.ExecuteActionsOnStart(melee.Blade.GetImpactPosition(), melee.gameObject);
         }
 
+        public void Stop(CharacterMelee melee)
+        {
+            float duration = Mathf.Max(0, 0);
+
+            melee.Character.RootMovement(
+                0,
+                0,
+                this.gravityInfluence,
+                this.movementForward,
+                this.movementSides,
+                this.movementVertical
+            );
+        }
+
         public void ExecuteHitPause()
         {
             if (!this.hitPause) return;
