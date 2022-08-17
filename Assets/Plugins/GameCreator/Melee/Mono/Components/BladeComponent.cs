@@ -290,18 +290,24 @@
                 if (!this.boxInterframeCaptures[i].active) continue;
                 
                 int numCollisions = Physics.OverlapBoxNonAlloc(
-                    this.boxInterframeCaptures[i].center,
+                    gameObject.transform.position,
                     this.boxSize / 2f,
                     this.bufferColliders,
                     this.boxInterframeCaptures[i].rotation,
                     this.layerMask,
                     QueryTriggerInteraction.Ignore
                 );
+                
 
                 for (int j = 0; j < numCollisions; ++j)
                 {
+
                     GameObject target = this.bufferColliders[j].gameObject;
-                    if (!candidates.Contains(target)) candidates.Add(target);
+
+                    if (!candidates.Contains(target)) {
+                        Debug.Log("Hit : " + target);
+                        candidates.Add(target);
+                    }
                 }
             }
 

@@ -1033,7 +1033,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.17172787
+      time: 0.108403996
       value: 1
       inSlope: Infinity
       outSlope: Infinity
@@ -1042,7 +1042,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.32532954
+      time: 0.16654903
       value: 2
       inSlope: Infinity
       outSlope: Infinity

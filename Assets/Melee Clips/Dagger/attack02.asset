@@ -15,7 +15,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: dee43154e84011b4292b06ed9a730eb4, type: 3}
   avatarMask: {fileID: 0}
   transitionIn: 0.1
-  transitionOut: 0.1
+  transitionOut: 0.4
   movementForward:
     serializedVersion: 2
     m_Curve:
@@ -1222,7 +1222,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.22671849
+      time: 0.18717054
       value: 1
       inSlope: Infinity
       outSlope: Infinity
@@ -1231,7 +1231,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.31242937
+      time: 0.25805083
       value: 2
       inSlope: Infinity
       outSlope: Infinity
