@@ -40,7 +40,7 @@ MonoBehaviour:
   groundHitReactionsBehind:
   - {fileID: 11400000, guid: 9d7b576b5744742c2ad03e38881a57db, type: 2}
   airborneHitReactionsFront:
-  - {fileID: 11400000, guid: 9d7b576b5744742c2ad03e38881a57db, type: 2}
+  - {fileID: 11400000, guid: 4e81124499dd11941a52b841fb875823, type: 2}
   airborneHitReactionsBehind:
   - {fileID: 11400000, guid: 9d7b576b5744742c2ad03e38881a57db, type: 2}
   knockbackReaction:
