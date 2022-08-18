@@ -48,7 +48,7 @@ MonoBehaviour:
   combos:
   - combo: 00000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: 319fdee41e981ca429c90132de1217e6, type: 2}
+    meleeClip: {fileID: 11400000, guid: dda898997b4830048a268701e31177b5, type: 2}
     isEnabled: 1
   - combo: 0000000000000000
     condition: 0

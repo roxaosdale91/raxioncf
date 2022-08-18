@@ -23,10 +23,10 @@ MonoBehaviour:
   defaultShield: {fileID: 11400000, guid: cb656d9c131df09499ffcbbd7d814c00, type: 2}
   characterState: {fileID: 11400000, guid: 1bdbde0638facfc4683e15f122b6f8c4, type: 2}
   characterMask: {fileID: 0}
-  prefab: {fileID: 191070, guid: b1a73d9e29e72e147a50663f2f8ddac7, type: 3}
+  prefab: {fileID: 134092, guid: 48610ef49478fca47a49e4e3c55f8c8a, type: 3}
   attachment: 18
-  positionOffset: {x: 27.114492, y: 8.95735, z: -26.173458}
-  rotationOffset: {x: 20.556217, y: 62.029175, z: 279.97858}
+  positionOffset: {x: 13.1, y: 7.6, z: -6.1}
+  rotationOffset: {x: 322.11502, y: 250.808, z: 73.64756}
   audioSheathe: {fileID: 8300000, guid: ec5b102aa3bfd4afabe344f209d29ef0, type: 3}
   audioDraw: {fileID: 8300000, guid: 9f819c03d98d04eed982c4633d9a8479, type: 3}
   audioImpactNormal: {fileID: 8300000, guid: 00f967e54adc343b1a07b49f4b7514c7, type: 3}
@@ -57,11 +57,11 @@ MonoBehaviour:
   - combo: 000000000000000000000000
     condition: 0
     meleeClip: {fileID: 11400000, guid: 49a2fcb64f29a734eb706607dd08d66c, type: 2}
-    isEnabled: 1
+    isEnabled: 0
   - combo: 00000000000000000000000000000000
     condition: 0
     meleeClip: {fileID: 11400000, guid: c3db18addada3594e9362b23c839227e, type: 2}
-    isEnabled: 1
+    isEnabled: 0
   prefabImpactNormal: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
     type: 3}
   prefabImpactKnockback: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,

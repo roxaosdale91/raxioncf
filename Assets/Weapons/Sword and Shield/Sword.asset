@@ -61,11 +61,11 @@ MonoBehaviour:
   - combo: 00000000000000000000000000000000
     condition: 0
     meleeClip: {fileID: 11400000, guid: 03ab24b3485cdab4b8060b58c591cbff, type: 2}
-    isEnabled: 1
+    isEnabled: 0
   - combo: 0000000000000000000000000000000000000000
     condition: 0
     meleeClip: {fileID: 11400000, guid: 8d19472b794d1a44f8e7426ef314caba, type: 2}
-    isEnabled: 1
+    isEnabled: 0
   prefabImpactNormal: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
     type: 3}
   prefabImpactKnockback: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
