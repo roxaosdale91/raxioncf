@@ -123,4 +123,4 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   followMinRadius: 1
-  followMaxRadius: 3
+  followMaxRadius: 2
