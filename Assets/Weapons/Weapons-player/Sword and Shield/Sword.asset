@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 174e3c307f7474e6fa3b8acd263a757e, type: 3}
-  m_Name: Spear
+  m_Name: Sword
   m_EditorClassIdentifier: 
   weaponName:
-    content: Spear
+    content: Sword
     postProcess: 0
     translationID: 0
   weaponDescription:
-    content: Super Hammer
+    content: Super sword
     postProcess: 0
     translationID: 0
-  defaultShield: {fileID: 11400000, guid: aa99f2ae7c2d3d14296157e0e3b7b353, type: 2}
-  characterState: {fileID: 11400000, guid: c2b601a5621c3bf47854a79d75c318c1, type: 2}
+  defaultShield: {fileID: 11400000, guid: ebd29db627b3b8840ac624096229ef4f, type: 2}
+  characterState: {fileID: 11400000, guid: 3a10e05ddf87ab142a9becd0aa854b38, type: 2}
   characterMask: {fileID: 0}
-  prefab: {fileID: 8384663211046332819, guid: f35679122b59888499aef7a69b391c05, type: 3}
+  prefab: {fileID: 102960, guid: 11b84f6e8e1190b46b3d40c72c9fe522, type: 3}
   attachment: 18
-  positionOffset: {x: 13.9, y: 7, z: -76.2}
-  rotationOffset: {x: 303.87836, y: 271.1078, z: 84.41345}
+  positionOffset: {x: 6.9, y: 5.5, z: -2.1}
+  rotationOffset: {x: 11.893489, y: 244.70314, z: 74.05941}
   audioSheathe: {fileID: 8300000, guid: ec5b102aa3bfd4afabe344f209d29ef0, type: 3}
   audioDraw: {fileID: 8300000, guid: 9f819c03d98d04eed982c4633d9a8479, type: 3}
   audioImpactNormal: {fileID: 8300000, guid: 00f967e54adc343b1a07b49f4b7514c7, type: 3}
@@ -38,9 +38,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a82564491ff9a429a9efbd4bfff24b3f, type: 2}
   - {fileID: 11400000, guid: 12e7e306e22984c29985583b67cfb87f, type: 2}
   groundHitReactionsBehind:
-  - {fileID: 11400000, guid: 4e81124499dd11941a52b841fb875823, type: 2}
-  airborneHitReactionsFront:
   - {fileID: 11400000, guid: 9d7b576b5744742c2ad03e38881a57db, type: 2}
+  airborneHitReactionsFront:
+  - {fileID: 11400000, guid: 4e81124499dd11941a52b841fb875823, type: 2}
   airborneHitReactionsBehind:
   - {fileID: 11400000, guid: 9d7b576b5744742c2ad03e38881a57db, type: 2}
   knockbackReaction:
@@ -48,21 +48,25 @@ MonoBehaviour:
   combos:
   - combo: 00000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: dda898997b4830048a268701e31177b5, type: 2}
+    meleeClip: {fileID: 11400000, guid: 2325b8d7433542847a6d5cf69ee1f87d, type: 2}
     isEnabled: 1
   - combo: 0000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: dd17a573768698f4fad70f52dc398ada, type: 2}
-    isEnabled: 0
-  - combo: 0000000000000000
-    condition: 0
-    meleeClip: {fileID: 11400000, guid: 1445eb6f5e7a31741af9168396bb0b26, type: 2}
+    meleeClip: {fileID: 11400000, guid: da9d7cadd551a404c8f8494241f3503a, type: 2}
     isEnabled: 1
   - combo: 000000000000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: 130333a072a12fd49b69f25bde422ffe, type: 2}
+    meleeClip: {fileID: 11400000, guid: 396197135b7e1aa4db01573aca9384f8, type: 2}
+    isEnabled: 0
+  - combo: 00000000000000000000000000000000
+    condition: 0
+    meleeClip: {fileID: 11400000, guid: 03ab24b3485cdab4b8060b58c591cbff, type: 2}
+    isEnabled: 0
+  - combo: 000000000000000000000000
+    condition: 0
+    meleeClip: {fileID: 11400000, guid: 8d19472b794d1a44f8e7426ef314caba, type: 2}
     isEnabled: 1
-  prefabImpactNormal: {fileID: 4329036519906242892, guid: 9408437927dbd43d6bca1f23faa3aba8,
+  prefabImpactNormal: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
     type: 3}
-  prefabImpactKnockback: {fileID: 4329036519906242892, guid: 9408437927dbd43d6bca1f23faa3aba8,
+  prefabImpactKnockback: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
     type: 3}

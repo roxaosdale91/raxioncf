@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 174e3c307f7474e6fa3b8acd263a757e, type: 3}
-  m_Name: Hammer
+  m_Name: Spear
   m_EditorClassIdentifier: 
   weaponName:
-    content: Hammer
+    content: Spear
     postProcess: 0
     translationID: 0
   weaponDescription:
     content: Super Hammer
     postProcess: 0
     translationID: 0
-  defaultShield: {fileID: 11400000, guid: cb656d9c131df09499ffcbbd7d814c00, type: 2}
-  characterState: {fileID: 11400000, guid: 1bdbde0638facfc4683e15f122b6f8c4, type: 2}
+  defaultShield: {fileID: 11400000, guid: aa99f2ae7c2d3d14296157e0e3b7b353, type: 2}
+  characterState: {fileID: 11400000, guid: c2b601a5621c3bf47854a79d75c318c1, type: 2}
   characterMask: {fileID: 0}
-  prefab: {fileID: 134092, guid: 48610ef49478fca47a49e4e3c55f8c8a, type: 3}
+  prefab: {fileID: 8384663211046332819, guid: f35679122b59888499aef7a69b391c05, type: 3}
   attachment: 18
-  positionOffset: {x: 13.1, y: 7.6, z: -6.1}
-  rotationOffset: {x: 322.11502, y: 250.808, z: 73.64756}
+  positionOffset: {x: 41.7, y: 26.8, z: -56.9}
+  rotationOffset: {x: 303.87836, y: 271.10776, z: 53.908733}
   audioSheathe: {fileID: 8300000, guid: ec5b102aa3bfd4afabe344f209d29ef0, type: 3}
   audioDraw: {fileID: 8300000, guid: 9f819c03d98d04eed982c4633d9a8479, type: 3}
   audioImpactNormal: {fileID: 8300000, guid: 00f967e54adc343b1a07b49f4b7514c7, type: 3}
@@ -48,21 +48,21 @@ MonoBehaviour:
   combos:
   - combo: 00000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: 7a538d66e56c8e74b8a41c39ec5ea3d2, type: 2}
+    meleeClip: {fileID: 11400000, guid: dda898997b4830048a268701e31177b5, type: 2}
     isEnabled: 1
   - combo: 0000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: ff76c4d0c256e434b80610451263c44e, type: 2}
+    meleeClip: {fileID: 11400000, guid: dd17a573768698f4fad70f52dc398ada, type: 2}
+    isEnabled: 0
+  - combo: 0000000000000000
+    condition: 0
+    meleeClip: {fileID: 11400000, guid: 1445eb6f5e7a31741af9168396bb0b26, type: 2}
     isEnabled: 1
   - combo: 000000000000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: 49a2fcb64f29a734eb706607dd08d66c, type: 2}
-    isEnabled: 0
-  - combo: 00000000000000000000000000000000
-    condition: 0
-    meleeClip: {fileID: 11400000, guid: c3db18addada3594e9362b23c839227e, type: 2}
-    isEnabled: 0
-  prefabImpactNormal: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
+    meleeClip: {fileID: 11400000, guid: 130333a072a12fd49b69f25bde422ffe, type: 2}
+    isEnabled: 1
+  prefabImpactNormal: {fileID: 4329036519906242892, guid: 9408437927dbd43d6bca1f23faa3aba8,
     type: 3}
-  prefabImpactKnockback: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
+  prefabImpactKnockback: {fileID: 4329036519906242892, guid: 9408437927dbd43d6bca1f23faa3aba8,
     type: 3}

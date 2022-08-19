@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f84d575e15c40443894df03f985f2eed, type: 3}
-  m_Name: HammerShield
+  m_Name: SpearShield
   m_EditorClassIdentifier: 
   shieldName:
     content: Shield Name
@@ -33,7 +33,7 @@ MonoBehaviour:
     type: 2}
   airbornPerfectBlockReaction: {fileID: 11400000, guid: 3deaaf5926fd54b608596e9d5526322f,
     type: 2}
-  defendState: {fileID: 11400000, guid: ceab173e5cf677b4fb4f4eb08055b45f, type: 2}
+  defendState: {fileID: 11400000, guid: 6509129f457d5c54ba0667991490994d, type: 2}
   defendMask: {fileID: 0}
   lowerBodyRotation: 0
   defenseAngle:
