@@ -1798,7 +1798,7 @@ MonoBehaviour:
   isAttack: 1
   isBlockable: 1
   pushForce: 0
-  poiseDamage: 2
+  poiseDamage: 0
   defenseDamage: 1
   interruptible: 0
   vulnerability: 0
