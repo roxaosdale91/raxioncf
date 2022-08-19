@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 89d35761eaaf9d849a6fec057e537f45, type: 3}
   avatarMask: {fileID: 0}
-  transitionIn: 0.25
-  transitionOut: 0.25
+  transitionIn: 0.1
+  transitionOut: 0
   movementForward:
     serializedVersion: 2
     m_Curve:
