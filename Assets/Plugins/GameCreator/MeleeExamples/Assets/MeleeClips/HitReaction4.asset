@@ -1278,7 +1278,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   gravityInfluence: 1
-  movementMultiplier: 1
+  movementMultiplier: 1.3
   soundEffect: {fileID: 0}
   hitPause: 0
   hitPauseAmount: 0.05
@@ -1333,7 +1333,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  actionsOnExecute: {fileID: 7661618748613654911, guid: 36ef5d0552155406282ad5e862d0ca25,
+  actionsOnExecute: {fileID: 8326207514482575307, guid: 41c4c4070f22405458374091bac9c4b9,
     type: 3}
-  actionsOnHit: {fileID: 8418157752286721231, guid: 2fac6a2da10cf497e94ab9d7b82c68ee,
+  actionsOnHit: {fileID: 3573176717540846098, guid: 49f28d812499ade4084ff6e336be2340,
     type: 3}

@@ -1278,7 +1278,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   gravityInfluence: 1
-  movementMultiplier: 1
+  movementMultiplier: 1.3
   soundEffect: {fileID: 0}
   hitPause: 0
   hitPauseAmount: 0.05
