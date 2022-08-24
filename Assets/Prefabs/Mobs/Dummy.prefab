@@ -38755,7 +38755,7 @@ MonoBehaviour:
       index: 0
   maxPoise:
     optionIndex: 0
-    value: 100000
+    value: 90
     global:
       allowTypesMask: 4
       name: 
@@ -38771,7 +38771,7 @@ MonoBehaviour:
       index: 0
   poiseRecoveryRate:
     optionIndex: 0
-    value: 100000
+    value: 100
     global:
       allowTypesMask: 4
       name: 

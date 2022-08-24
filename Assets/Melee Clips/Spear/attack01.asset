@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 4b2680ae8eaf5d54980f21409c35e3d3, type: 3}
   avatarMask: {fileID: 0}
-  transitionIn: 0.25
-  transitionOut: 0.25
+  transitionIn: 0.1
+  transitionOut: 0.1
   movementForward:
     serializedVersion: 2
     m_Curve:
@@ -1817,7 +1817,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   gravityInfluence: 1
-  movementMultiplier: 1
+  movementMultiplier: 2
   soundEffect: {fileID: 0}
   hitPause: 1
   hitPauseAmount: 0.05
@@ -1843,7 +1843,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.12345177
+      time: 0.35984924
       value: 1
       inSlope: Infinity
       outSlope: Infinity
@@ -1852,7 +1852,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1.7132158
+      time: 0.49958473
       value: 2
       inSlope: Infinity
       outSlope: Infinity
@@ -1861,7 +1861,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1.8333334
+      time: 1.0833334
       value: 2
       inSlope: Infinity
       outSlope: Infinity

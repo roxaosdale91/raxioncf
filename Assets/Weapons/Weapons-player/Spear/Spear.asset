@@ -48,19 +48,15 @@ MonoBehaviour:
   combos:
   - combo: 00000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: dda898997b4830048a268701e31177b5, type: 2}
+    meleeClip: {fileID: 11400000, guid: 319fdee41e981ca429c90132de1217e6, type: 2}
     isEnabled: 1
   - combo: 0000000000000000
     condition: 0
     meleeClip: {fileID: 11400000, guid: dd17a573768698f4fad70f52dc398ada, type: 2}
-    isEnabled: 0
-  - combo: 0000000000000000
-    condition: 0
-    meleeClip: {fileID: 11400000, guid: 1445eb6f5e7a31741af9168396bb0b26, type: 2}
     isEnabled: 1
   - combo: 000000000000000000000000
     condition: 0
-    meleeClip: {fileID: 11400000, guid: 130333a072a12fd49b69f25bde422ffe, type: 2}
+    meleeClip: {fileID: 11400000, guid: 1445eb6f5e7a31741af9168396bb0b26, type: 2}
     isEnabled: 1
   prefabImpactNormal: {fileID: 4329036519906242892, guid: 9408437927dbd43d6bca1f23faa3aba8,
     type: 3}
