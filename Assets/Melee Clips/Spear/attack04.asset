@@ -2230,7 +2230,7 @@ MonoBehaviour:
   isAttack: 1
   isBlockable: 1
   pushForce: 0
-  poiseDamage: 0
+  poiseDamage: 100
   defenseDamage: 1
   interruptible: 0
   vulnerability: 0

@@ -34,7 +34,7 @@ MonoBehaviour:
     varStr:
       value: 
     varNum:
-      value: 1
+      value: 5
     varBol:
       value: 0
     varCol:

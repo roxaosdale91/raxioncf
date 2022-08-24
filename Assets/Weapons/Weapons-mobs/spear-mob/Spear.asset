@@ -25,8 +25,8 @@ MonoBehaviour:
   characterMask: {fileID: 0}
   prefab: {fileID: 8384663211046332819, guid: 5301f653867420b48a44bdefb211d49e, type: 3}
   attachment: 18
-  positionOffset: {x: 41.7, y: 26.8, z: -56.9}
-  rotationOffset: {x: 303.87836, y: 271.10776, z: 53.908733}
+  positionOffset: {x: 0.515, y: -0.011, z: -0.591}
+  rotationOffset: {x: 276.08344, y: 131.96948, z: 191.58644}
   audioSheathe: {fileID: 8300000, guid: ec5b102aa3bfd4afabe344f209d29ef0, type: 3}
   audioDraw: {fileID: 8300000, guid: 9f819c03d98d04eed982c4633d9a8479, type: 3}
   audioImpactNormal: {fileID: 8300000, guid: 00f967e54adc343b1a07b49f4b7514c7, type: 3}

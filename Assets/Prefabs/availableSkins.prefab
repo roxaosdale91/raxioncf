@@ -18,13 +18,6 @@ GameObject:
   - component: {fileID: 5726714744551436844}
   - component: {fileID: 5726714744551436845}
   - component: {fileID: 5726714744551436834}
-  - component: {fileID: 621080370520278253}
-  - component: {fileID: 7892999738657034565}
-  - component: {fileID: 1721529966908299158}
-  - component: {fileID: 8286391751931273959}
-  - component: {fileID: 8938826678375387195}
-  - component: {fileID: 2130942488156416564}
-  - component: {fileID: 8208659107141620820}
   m_Layer: 0
   m_Name: availableSkins
   m_TagString: Untagged
@@ -69,13 +62,6 @@ MonoBehaviour:
   - {fileID: 5726714744551436844}
   - {fileID: 5726714744551436845}
   - {fileID: 5726714744551436834}
-  - {fileID: 621080370520278253}
-  - {fileID: 7892999738657034565}
-  - {fileID: 1721529966908299158}
-  - {fileID: 8286391751931273959}
-  - {fileID: 8938826678375387195}
-  - {fileID: 2130942488156416564}
-  - {fileID: 8208659107141620820}
   save: 0
   type: 9
   variables: []
@@ -113,7 +99,7 @@ MonoBehaviour:
     varSpr:
       value: {fileID: 0}
     varObj:
-      value: {fileID: 1290725874115128, guid: 071b4da7cfff18347a371c677585b749, type: 3}
+      value: {fileID: 1916933298521316, guid: 06a217c3ea84f3647bb83f3656e3832b, type: 3}
   isExpanded: 1
 --- !u!114 &5726714744551436840
 MonoBehaviour:
@@ -149,7 +135,7 @@ MonoBehaviour:
     varSpr:
       value: {fileID: 0}
     varObj:
-      value: {fileID: 1120664368450518, guid: 99454aa1bd3d70344af7fb23aa28deb2, type: 3}
+      value: {fileID: 1596485419112710, guid: d47d5ac7dfc19da419169847c76d638b, type: 3}
   isExpanded: 1
 --- !u!114 &5726714744551436841
 MonoBehaviour:
@@ -185,7 +171,7 @@ MonoBehaviour:
     varSpr:
       value: {fileID: 0}
     varObj:
-      value: {fileID: 1111616552182794, guid: f89037950aa30d043a119f48c2aa5f3e, type: 3}
+      value: {fileID: 1069347578494328, guid: 5cc8937f65137dc49bb957920049ad14, type: 3}
   isExpanded: 1
 --- !u!114 &5726714744551436846
 MonoBehaviour:
@@ -221,7 +207,7 @@ MonoBehaviour:
     varSpr:
       value: {fileID: 0}
     varObj:
-      value: {fileID: 1326728806038226, guid: c360e03d37d6f6c449ea70983e7e8b0b, type: 3}
+      value: {fileID: 1829374085354194, guid: 30f2ee1f6338c464bbbd30981b3da3f4, type: 3}
   isExpanded: 1
 --- !u!114 &5726714744551436847
 MonoBehaviour:
@@ -257,7 +243,7 @@ MonoBehaviour:
     varSpr:
       value: {fileID: 0}
     varObj:
-      value: {fileID: 1265346787747520, guid: 33327bc9948cc644ca0f4b1963219c08, type: 3}
+      value: {fileID: 1551201315733772, guid: 64eb1c3ceef25d4408786c061ce050ea, type: 3}
   isExpanded: 1
 --- !u!114 &5726714744551436844
 MonoBehaviour:
@@ -293,7 +279,7 @@ MonoBehaviour:
     varSpr:
       value: {fileID: 0}
     varObj:
-      value: {fileID: 1043270942613670, guid: fdb7429b76ccf5f4782fe32c5ef234ab, type: 3}
+      value: {fileID: 1279576649630488, guid: 908987278249b014f91c9e63dd7174e8, type: 3}
   isExpanded: 1
 --- !u!114 &5726714744551436845
 MonoBehaviour:
@@ -329,7 +315,7 @@ MonoBehaviour:
     varSpr:
       value: {fileID: 0}
     varObj:
-      value: {fileID: 1210876326423076, guid: bcdf5c806f4211d4f9d3698be5a0ca9b, type: 3}
+      value: {fileID: 1064298965650098, guid: 1e1312b383a084a42a9930f135c39ff7, type: 3}
   isExpanded: 1
 --- !u!114 &5726714744551436834
 MonoBehaviour:
@@ -365,257 +351,5 @@ MonoBehaviour:
     varSpr:
       value: {fileID: 0}
     varObj:
-      value: {fileID: 1039212402992588, guid: 906cc1997e65aad4fb8ea55a2ca52b08, type: 3}
-  isExpanded: 1
---- !u!114 &621080370520278253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726714744551436835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5427d7a3d7317485f8580bfb4a87d521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variable:
-    name: 099c40a7b0d744219ea76e79853d97f8
-    save: 1
-    type: 9
-    tags: 0
-    varStr:
-      value: 
-    varNum:
-      value: 0
-    varBol:
-      value: 0
-    varCol:
-      value: {r: 1, g: 1, b: 1, a: 1}
-    varVc2:
-      value: {x: 0, y: 0}
-    varVc3:
-      value: {x: 0, y: 0, z: 0}
-    varTxt:
-      value: {fileID: 0}
-    varSpr:
-      value: {fileID: 0}
-    varObj:
-      value: {fileID: 1515044099295822, guid: 4431c404176926a40971a671a4aa862e, type: 3}
-  isExpanded: 1
---- !u!114 &7892999738657034565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726714744551436835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5427d7a3d7317485f8580bfb4a87d521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variable:
-    name: 3beed3df82b94d64bca045140c95320d
-    save: 1
-    type: 9
-    tags: 0
-    varStr:
-      value: 
-    varNum:
-      value: 0
-    varBol:
-      value: 0
-    varCol:
-      value: {r: 1, g: 1, b: 1, a: 1}
-    varVc2:
-      value: {x: 0, y: 0}
-    varVc3:
-      value: {x: 0, y: 0, z: 0}
-    varTxt:
-      value: {fileID: 0}
-    varSpr:
-      value: {fileID: 0}
-    varObj:
-      value: {fileID: 1241995542472648, guid: 713a9b5e8f4abff4d9a7ae02af02367b, type: 3}
-  isExpanded: 1
---- !u!114 &1721529966908299158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726714744551436835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5427d7a3d7317485f8580bfb4a87d521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variable:
-    name: 939193a494b8453eadad3d37066710b0
-    save: 1
-    type: 9
-    tags: 0
-    varStr:
-      value: 
-    varNum:
-      value: 0
-    varBol:
-      value: 0
-    varCol:
-      value: {r: 1, g: 1, b: 1, a: 1}
-    varVc2:
-      value: {x: 0, y: 0}
-    varVc3:
-      value: {x: 0, y: 0, z: 0}
-    varTxt:
-      value: {fileID: 0}
-    varSpr:
-      value: {fileID: 0}
-    varObj:
-      value: {fileID: 1043270942613670, guid: fdb7429b76ccf5f4782fe32c5ef234ab, type: 3}
-  isExpanded: 1
---- !u!114 &8286391751931273959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726714744551436835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5427d7a3d7317485f8580bfb4a87d521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variable:
-    name: 69adbe11bc4340898ad9b5781590e8e1
-    save: 1
-    type: 9
-    tags: 0
-    varStr:
-      value: 
-    varNum:
-      value: 0
-    varBol:
-      value: 0
-    varCol:
-      value: {r: 1, g: 1, b: 1, a: 1}
-    varVc2:
-      value: {x: 0, y: 0}
-    varVc3:
-      value: {x: 0, y: 0, z: 0}
-    varTxt:
-      value: {fileID: 0}
-    varSpr:
-      value: {fileID: 0}
-    varObj:
-      value: {fileID: 1523730577113562, guid: 75d8ba510369db647abf64b18ca34490, type: 3}
-  isExpanded: 1
---- !u!114 &8938826678375387195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726714744551436835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5427d7a3d7317485f8580bfb4a87d521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variable:
-    name: 6e209be68d33411689870e3610c17c03
-    save: 1
-    type: 9
-    tags: 0
-    varStr:
-      value: 
-    varNum:
-      value: 0
-    varBol:
-      value: 0
-    varCol:
-      value: {r: 1, g: 1, b: 1, a: 1}
-    varVc2:
-      value: {x: 0, y: 0}
-    varVc3:
-      value: {x: 0, y: 0, z: 0}
-    varTxt:
-      value: {fileID: 0}
-    varSpr:
-      value: {fileID: 0}
-    varObj:
-      value: {fileID: 1930578967618458, guid: b47f208be43606441913c5687263e50e, type: 3}
-  isExpanded: 1
---- !u!114 &2130942488156416564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726714744551436835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5427d7a3d7317485f8580bfb4a87d521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variable:
-    name: 43bb7abff4364530bb388d8f55198a8e
-    save: 1
-    type: 9
-    tags: 0
-    varStr:
-      value: 
-    varNum:
-      value: 0
-    varBol:
-      value: 0
-    varCol:
-      value: {r: 1, g: 1, b: 1, a: 1}
-    varVc2:
-      value: {x: 0, y: 0}
-    varVc3:
-      value: {x: 0, y: 0, z: 0}
-    varTxt:
-      value: {fileID: 0}
-    varSpr:
-      value: {fileID: 0}
-    varObj:
-      value: {fileID: 1882611750326328, guid: f8d073d0f71331843af650fef6755319, type: 3}
-  isExpanded: 1
---- !u!114 &8208659107141620820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726714744551436835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5427d7a3d7317485f8580bfb4a87d521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variable:
-    name: 76cf0ccde9184115b0496aa91c4b7697
-    save: 1
-    type: 9
-    tags: 0
-    varStr:
-      value: 
-    varNum:
-      value: 0
-    varBol:
-      value: 0
-    varCol:
-      value: {r: 1, g: 1, b: 1, a: 1}
-    varVc2:
-      value: {x: 0, y: 0}
-    varVc3:
-      value: {x: 0, y: 0, z: 0}
-    varTxt:
-      value: {fileID: 0}
-    varSpr:
-      value: {fileID: 0}
-    varObj:
-      value: {fileID: 1009551149358236, guid: 1d3c25033160ed74d9114e7428ef7f59, type: 3}
+      value: {fileID: 1623817811568398, guid: 3e4cf0221a0e8db41bcb50be99ebe457, type: 3}
   isExpanded: 1
