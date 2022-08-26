@@ -88,13 +88,30 @@
                 PLANE
             );
 
+            Vector3 newDirection = charDirection;
+
             float angle = Vector3.SignedAngle(moveDirection, charDirection, Vector3.up);
             AnimationClip clip = null;
 
-            if (angle <= 45f && angle >= -45f) clip = this.dashClipForward;
-            else if (angle < 135f && angle > 45f) clip = this.dashClipLeft;
-            else if (angle > -135f && angle < -45f) clip = dashClipRight;
-            else clip = this.dashClipBackward;
+            if (angle <= 45f && angle >= -45f) {
+                clip = this.dashClipForward;
+                newDirection = Vector3.forward;
+            }
+            else if (angle < 135f && angle > 45f) {
+                clip = this.dashClipLeft;
+                newDirection = Vector3.left;
+            }
+            else if (angle > -135f && angle < -45f) {
+                clip = dashClipRight;
+                newDirection = Vector3.right;
+            }
+            else {
+                clip = this.dashClipBackward;
+                newDirection = Vector3.back;
+            }
+            
+            var directionMovement = CharacterLocomotion.OVERRIDE_FACE_DIRECTION.MovementDirection;
+           locomotion.overrideFaceDirection = directionMovement;
 
             bool isDashing = characterTarget.Dash(
                 moveDirection.normalized,

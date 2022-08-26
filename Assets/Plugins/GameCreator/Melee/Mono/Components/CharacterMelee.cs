@@ -81,7 +81,7 @@
         protected GameObject modelWeapon;
         protected GameObject modelShield;
 
-        protected MeleeClip currentMeleeClip;
+        public MeleeClip currentMeleeClip;
         protected HashSet<int> targetsEvaluated;
 
         private float startBlockingTime = -100f;
@@ -386,8 +386,11 @@
 
         public void StopAttack()
         {
-            this.comboSystem.Stop();
-            if(this != null && this.currentMeleeClip != null) this.currentMeleeClip.Stop(this);
+            // Make sure to only stop attack sequence
+            if(this != null && this.currentMeleeClip != null && this.currentMeleeClip.isAttack == true) {
+                // this.currentMeleeClip.Stop(this);
+                this.comboSystem.Stop();
+            }
         }
 
         public int GetCurrentPhase()

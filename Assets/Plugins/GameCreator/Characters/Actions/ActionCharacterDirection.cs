@@ -24,9 +24,14 @@
         public override bool InstantExecute(GameObject target, IAction[] actions, int index)
         {
             Character c = this.character.GetCharacter(target);
+            Debug.Log("Camera Direction -- " + this.direction);
+
+            var removeDirectionOverride = CharacterLocomotion.OVERRIDE_FACE_DIRECTION.None;
 
             if (c != null)
             {
+            	c.characterLocomotion.overrideFaceDirection = removeDirectionOverride;
+
                 c.characterLocomotion.faceDirection = this.direction;
                 if (this.direction == CharacterLocomotion.FACE_DIRECTION.Target)
                 {

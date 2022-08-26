@@ -2,6 +2,7 @@
 {
     using System.Collections;
     using GameCreator.Core;
+    using GameCreator.Characters;
     using UnityEngine;
 
     [CreateAssetMenu(
@@ -68,6 +69,7 @@
 
         public float poiseDamage = 2f;
         public float defenseDamage = 1f;
+        private static readonly Vector3 PLANE = new Vector3(1, 0, 1);
 
         // properties:
         public Interrupt interruptible = Interrupt.Interruptible;
@@ -122,9 +124,10 @@
         {
             float duration = Mathf.Max(0, 0);
 
+            melee.Character.GetCharacterAnimator().StopGesture(0.1f);
             melee.Character.RootMovement(
                 0,
-                0,
+                duration,
                 this.gravityInfluence,
                 this.movementForward,
                 this.movementSides,
