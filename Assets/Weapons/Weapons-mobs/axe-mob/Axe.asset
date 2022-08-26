@@ -38,13 +38,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a82564491ff9a429a9efbd4bfff24b3f, type: 2}
   - {fileID: 11400000, guid: 12e7e306e22984c29985583b67cfb87f, type: 2}
   groundHitReactionsBehind:
-  - {fileID: 11400000, guid: 4e81124499dd11941a52b841fb875823, type: 2}
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
   airborneHitReactionsFront:
-  - {fileID: 11400000, guid: 9d7b576b5744742c2ad03e38881a57db, type: 2}
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
   airborneHitReactionsBehind:
-  - {fileID: 11400000, guid: 9d7b576b5744742c2ad03e38881a57db, type: 2}
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
   knockbackReaction:
-  - {fileID: 11400000, guid: f0c19687254ac41c3b58c0831104f70f, type: 2}
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
   combos:
   - combo: 00000000
     condition: 0

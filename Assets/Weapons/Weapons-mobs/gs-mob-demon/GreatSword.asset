@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174e3c307f7474e6fa3b8acd263a757e, type: 3}
+  m_Name: GreatSword
+  m_EditorClassIdentifier: 
+  weaponName:
+    content: Hammer
+    postProcess: 0
+    translationID: 0
+  weaponDescription:
+    content: Super Hammer
+    postProcess: 0
+    translationID: 0
+  defaultShield: {fileID: 11400000, guid: 640376231ae6c4e4fa653f9299b0115b, type: 2}
+  characterState: {fileID: 11400000, guid: d033375c67ac0d54aa507bd49cecdcde, type: 2}
+  characterMask: {fileID: 0}
+  prefab: {fileID: 1755006667592914, guid: 175d776c34e15e546a1a8af09cb09121, type: 3}
+  attachment: 18
+  positionOffset: {x: 0.06, y: 0.028, z: 0.076}
+  rotationOffset: {x: 21.002132, y: 246.74637, z: 85.175835}
+  audioSheathe: {fileID: 8300000, guid: ec5b102aa3bfd4afabe344f209d29ef0, type: 3}
+  audioDraw: {fileID: 8300000, guid: 9f819c03d98d04eed982c4633d9a8479, type: 3}
+  audioImpactNormal: {fileID: 8300000, guid: 00f967e54adc343b1a07b49f4b7514c7, type: 3}
+  audioImpactKnockback: {fileID: 8300000, guid: defd2ad8bedbe453f94c94c4590bcf2f,
+    type: 3}
+  groundHitReactionsFront:
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
+  groundHitReactionsBehind:
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
+  airborneHitReactionsFront:
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
+  airborneHitReactionsBehind:
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
+  knockbackReaction:
+  - {fileID: 11400000, guid: e82231c1b51861f43a64e8869328df61, type: 2}
+  combos:
+  - combo: 00000000
+    condition: 0
+    meleeClip: {fileID: 11400000, guid: abc1da79070413b449b391122a674621, type: 2}
+    isEnabled: 1
+  - combo: 01000000
+    condition: 0
+    meleeClip: {fileID: 11400000, guid: 64a0e2d551587ff4389f6a31b186a1f3, type: 2}
+    isEnabled: 1
+  prefabImpactNormal: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
+    type: 3}
+  prefabImpactKnockback: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2,
+    type: 3}
