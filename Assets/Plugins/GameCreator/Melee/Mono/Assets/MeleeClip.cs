@@ -67,6 +67,8 @@
         public bool isBlockable = true;
         public float pushForce = 50f;
 
+        public bool isKnockup = false;
+
         public float poiseDamage = 2f;
         public float defenseDamage = 1f;
         private static readonly Vector3 PLANE = new Vector3(1, 0, 1);
@@ -106,6 +108,7 @@
                 this.transitionIn, this.transitionOut
             );
 
+            // float duration = Mathf.Max(0, this.animationClip.length - this.transitionOut);
             float duration = Mathf.Max(0, this.animationClip.length - this.transitionOut);
 
             melee.Character.RootMovement(
@@ -122,12 +125,9 @@
 
         public void Stop(CharacterMelee melee)
         {
-            float duration = Mathf.Max(0, 0);
-
-            melee.Character.GetCharacterAnimator().StopGesture(0.1f);
             melee.Character.RootMovement(
                 0,
-                duration,
+                0,
                 this.gravityInfluence,
                 this.movementForward,
                 this.movementSides,

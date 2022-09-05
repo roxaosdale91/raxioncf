@@ -22,7 +22,9 @@
             IsGrounded,
             IsOnAir,
             CanRun,
-            CanJump
+            CanJump,
+            isKnockUp,
+            isDodging
         }
 
         public TargetCharacter target;
@@ -70,6 +72,18 @@
                 case CharacterProperty.CanJump:
                     if (character.characterLocomotion != null)
                         result = character.characterLocomotion.canJump;
+                    break;
+
+                case CharacterProperty.isKnockUp:
+                    if (character.characterLocomotion != null)
+                        Debug.Log("KNOCKED UP: FROM CODE: " + character.isKnockedUp());
+                        result = character.isKnockedUp();
+                    break;
+
+                case CharacterProperty.isDodging:
+                    if (character.characterLocomotion != null)
+                        Debug.Log("DODGING: FROM CODE: " + character.isDodging());
+                        result = character.isDodging();
                     break;
             }
 

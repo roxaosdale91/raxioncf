@@ -51,26 +51,8 @@
 			if (melee != null && melee.currentMeleeClip != null)
 			{
 				if(melee.currentMeleeClip.isAttack == true) {
+					characterAnimator.StopGesture(0f);
 					melee.StopAttack();
-					melee.Blade.EventAttackEnd.Invoke();
-
-					// float angle = Vector3.SignedAngle(moveDirection, charDirection, Vector3.up);
-
-					// if (angle <= 45f && angle >= -45f) {
-					// 	newDirection = Vector3.forward;
-					// }
-					// else if (angle < 135f && angle > 45f) {
-					// 	newDirection = Vector3.left;
-					// }
-					// else if (angle > -135f && angle < -45f) {
-					// 	newDirection = Vector3.right;
-					// }
-					// else {
-					// 	newDirection = Vector3.back;
-					// }
-
-					// _character.characterLocomotion.SetDirectionalDirection(newDirection);
-					// player.ComputeMovement(newDirection);
 				}
 			}
 

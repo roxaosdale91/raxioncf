@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 67817467a0977e146b0eaa43dece74a9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Tigerious
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 027099d22f69226489ce4be0db56f39c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

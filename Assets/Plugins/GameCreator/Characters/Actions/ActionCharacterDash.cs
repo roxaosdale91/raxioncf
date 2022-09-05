@@ -7,6 +7,7 @@
     using GameCreator.Core;
     using GameCreator.Characters;
     using GameCreator.Variables;
+    using GameCreator.Melee;
 
     #if UNITY_EDITOR
     using UnityEditor;
@@ -42,14 +43,32 @@
         public AnimationClip dashClipRight;
         public AnimationClip dashClipLeft;
 
+        public float waitTime = 0.50f;
+        private bool forceStop = false;
+
         public override bool InstantExecute(GameObject target, IAction[] actions, int index)
         {
             Character characterTarget = this.character.GetCharacter(target);
             if (characterTarget == null) return true;
 
+            
+
             CharacterLocomotion locomotion = characterTarget.characterLocomotion;
+            CharacterMelee melee = characterTarget.GetComponent<CharacterMelee>();
             CharacterAnimator animator = characterTarget.GetCharacterAnimator();
+
             Vector3 moveDirection = Vector3.zero;
+            locomotion.Stop();
+
+            if (melee != null)
+			{
+                melee.IsDodging = true;
+				if(melee.currentMeleeClip != null && melee.currentMeleeClip.isAttack == true) {
+                    melee.StopAttack();
+					animator.StopGesture(0f);
+                    melee.currentMeleeClip = null;
+				}
+			}
 
             switch (this.direction)
             {
@@ -111,7 +130,7 @@
             }
             
             var directionMovement = CharacterLocomotion.OVERRIDE_FACE_DIRECTION.MovementDirection;
-           locomotion.overrideFaceDirection = directionMovement;
+            locomotion.overrideFaceDirection = directionMovement;
 
             bool isDashing = characterTarget.Dash(
                 moveDirection.normalized,
@@ -119,12 +138,14 @@
                 this.duration.GetValue(target),
                 this.drag
             );
-
+            
             if (isDashing && clip != null && animator != null)
             {
                 animator.CrossFadeGesture(clip, 1f, null, 0.05f, 0.5f);
             }
 
+
+            melee.IsDodging = false;
             return true;
         }
 

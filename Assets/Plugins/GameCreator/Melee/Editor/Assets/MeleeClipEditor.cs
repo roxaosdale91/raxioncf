@@ -65,6 +65,7 @@
         private SerializedProperty spIsAttack;
         private SerializedProperty spIsBlockable;
 
+
         private SerializedProperty spPoiseDamage;
         private SerializedProperty spDefenseDamage;
 
@@ -73,6 +74,9 @@
         private SerializedProperty spPosture;
 
         private SerializedProperty spAttackPhase;
+
+        
+        private SerializedProperty spIsKnockUp;
 
         private int drawDragType;
 
@@ -127,6 +131,8 @@
             this.spPosture = this.serializedObject.FindProperty("posture");
 
             this.spAttackPhase = serializedObject.FindProperty("attackPhase");
+
+            this.spIsKnockUp = this.serializedObject.FindProperty("isKnockup");
 
             if (!TEX_PREVIEW_ACCEPT) TEX_PREVIEW_ACCEPT = MakeTexture(Color.green, 0.25f);
             if (!TEX_PREVIEW_REJECT) TEX_PREVIEW_REJECT = MakeTexture(Color.red, 0.25f);
@@ -348,6 +354,8 @@
                     EditorGUILayout.PropertyField(this.spIsAttack);
                     EditorGUI.BeginDisabledGroup(!this.spIsAttack.boolValue);
                     EditorGUI.indentLevel++;
+                    
+                    EditorGUILayout.PropertyField(this.spIsKnockUp);
 
                     EditorGUILayout.PropertyField(this.spIsBlockable);
                     EditorGUILayout.PropertyField(this.spDefenseDamage);

@@ -9,6 +9,7 @@
     using UnityEngine.Audio;
     using GameCreator.Variables;
     using GameCreator.Pool;
+using System.Threading.Tasks;
 
     [RequireComponent(typeof(Character))]
     [AddComponentMenu("Game Creator/Melee/Character Melee")]
@@ -32,7 +33,9 @@
         private const float MAX_RAND_PITCH = 1.2f;
 
         private const float TRANSITION = 0.15f;
-        protected const float INPUT_BUFFER_TIME = 0.35f;
+
+        //Buffer window adjustment for animation cancelling
+        protected const float INPUT_BUFFER_TIME = 0.1f;
 
         private const CharacterAnimation.Layer LAYER_DEFEND = CharacterAnimation.Layer.Layer3;
 
@@ -59,10 +62,13 @@
 
         public bool IsDrawing { get; protected set; }
         public bool IsSheathing { get; protected set; }
+        public bool IsDodging { get; set; }
 
         public bool IsAttacking { get; private set; }
         public bool IsBlocking  { get; private set; }
         public bool HasFocusTarget { get; private set; }
+
+        public bool IsKnockup  { get; protected set; }
 
         public bool IsStaggered => this.isStaggered && GetTime() <= this.staggerEndtime;
         public bool IsInvincible => this.isInvincible && GetTime() <= this.invincibilityEndTime;
@@ -120,9 +126,11 @@
             if (this.comboSystem != null)
             {
                 this.comboSystem.Update();
+                var canAttack = this.CanAttack();
 
-                if (this.CanAttack() && this.inputBuffer.HasInput())
+                if (canAttack && this.inputBuffer.HasInput())
                 {
+                    var isDodging =  this.IsDodging;
                     ActionKey key = this.inputBuffer.GetInput();
                     MeleeClip meleeClip = this.comboSystem.Select(key);
 
@@ -287,6 +295,11 @@
             if (weapon != null)
             {
                 this.currentWeapon = weapon;
+                
+
+                this.previousWeapon = this.currentWeapon;
+                this.previousShield = shield != null ? shield : weapon.defaultShield;
+
                 this.EquipShield(shield != null ? shield : weapon.defaultShield);
 
                 this.comboSystem = new ComboSystem(this, weapon.combos);
@@ -388,8 +401,9 @@
         {
             // Make sure to only stop attack sequence
             if(this != null && this.currentMeleeClip != null && this.currentMeleeClip.isAttack == true) {
-                // this.currentMeleeClip.Stop(this);
                 this.comboSystem.Stop();
+                this.currentMeleeClip.Stop(this);
+                this.Blade.EventAttackEnd.Invoke();
             }
         }
 
@@ -505,6 +519,12 @@
 
         public HitResult OnReceiveAttack(CharacterMelee attacker, MeleeClip attack)
         {
+            
+
+            Debug.Log("CharacterMelee.cs: IsKnockup: " + attack.isKnockup);
+            Debug.Log("CharacterMelee.cs: isAttack: " + attack.isAttack);
+            Debug.Log("CharacterMelee.cs: isAttack: " + attack.isBlockable);
+
             if (this.currentWeapon == null) return HitResult.ReceiveDamage;
             if (this.IsInvincible) return HitResult.Ignore;
 
@@ -581,10 +601,20 @@
             bool isFrontalAttack = attackAngle >= 90f;
             bool isKnockback = this.Poise <= float.Epsilon;
 
+            bool charIsKnockedUp = this.Character.isKnockedUp();
+            var characterLocomotion = this.Character.characterLocomotion;
+
+
+            if(charIsKnockedUp == false && attack.isKnockup == true) { // Check Previous Knockup Status
+                characterLocomotion.isKnockedUp = true;
+                charIsKnockedUp = this.Character.isKnockedUp();
+            }
+
             MeleeClip hitReaction = this.currentWeapon.GetHitReaction(
                 this.Character.IsGrounded(),
                 isFrontalAttack,
-                isKnockback
+                isKnockback,
+                this.Character.isKnockedUp()
             );
 
             this.ExecuteEffects(
@@ -598,12 +628,19 @@
             );
 
             attack.ExecuteHitPause();
-            if (!this.IsUninterruptable)
+
+            if (!this.IsUninterruptable && charIsKnockedUp == false)
             {
                 hitReaction.Play(this);
             }
-
             return HitResult.ReceiveDamage;
+        }
+
+        private async Task<bool> RemoveKnockUpState(CharacterMelee meleeCharacter) {
+            var characterLocomotion = meleeCharacter.Character.characterLocomotion;
+            characterLocomotion.isKnockedUp = false;
+
+            return true;
         }
 
         // PRIVATE METHODS: -----------------------------------------------------------------------

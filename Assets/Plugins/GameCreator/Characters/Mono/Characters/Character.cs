@@ -203,6 +203,18 @@
             return this.characterLocomotion.isControllable;
         }
 
+        public bool isKnockedUp()
+        {
+            if (this.characterLocomotion == null) return false;
+            return this.characterLocomotion.isKnockedUp;
+        }
+
+        public bool isDodging()
+        {
+            if (this.characterLocomotion == null) return false;
+            return this.characterLocomotion.isDodging;
+        }
+
         public bool IsRagdoll()
         {
             return (this.ragdoll != null && this.ragdoll.GetState() != CharacterRagdoll.State.Normal);
@@ -239,6 +251,10 @@
         public bool Dash(Vector3 direction, float impulse, float duration, float drag = 10f)
         {
             if (this.characterLocomotion.isBusy) return false;
+
+            this.characterLocomotion.isDodging = true;
+
+            this.characterLocomotion.Stop();
 
             this.characterLocomotion.Dash(direction, impulse, duration, drag);
             if (this.animator != null) this.animator.Dash();

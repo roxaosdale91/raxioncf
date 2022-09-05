@@ -105,10 +105,12 @@
             return instance;
         }
 
-        public MeleeClip GetHitReaction(bool isGrounded, bool frontalAttack, bool isKnockback)
+        public MeleeClip GetHitReaction(bool isGrounded, bool frontalAttack, bool isKnockback, bool isKnockup)
         {
             int index;
             MeleeClip meleeClip = null;
+
+            Debug.Log("MeleeWeapon.cs isKnockup: " + isKnockup);
 
             if (isKnockback)
             {

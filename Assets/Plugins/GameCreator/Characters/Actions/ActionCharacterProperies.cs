@@ -25,7 +25,8 @@
             Gravity,
             MaxFallSpeed,
             CanJump,
-            Busy
+            Busy,
+            KnockedUp
 		}
 
         public TargetCharacter target = new TargetCharacter(TargetCharacter.Target.Player);
@@ -83,6 +84,11 @@
                     
                     case CHANGE_PROPERTY.Busy:
 	                    charTarget.characterLocomotion.isBusy = this.valueBool.GetValue(target);
+	                    break;
+                    
+                    case CHANGE_PROPERTY.KnockedUp:
+                        Debug.Log("KNOCKED UP: NEW VALUE: " + this.valueBool.GetValue(target));
+	                    charTarget.characterLocomotion.isKnockedUp = this.valueBool.GetValue(target);
 	                    break;
                 }
             }
@@ -153,6 +159,7 @@
                 case CHANGE_PROPERTY.MaxFallSpeed: EditorGUILayout.PropertyField(this.spValueNumber); break;
                 case CHANGE_PROPERTY.CanJump: EditorGUILayout.PropertyField(this.spValueBool); break;
                 case CHANGE_PROPERTY.Busy: EditorGUILayout.PropertyField(this.spValueBool); break;
+                case CHANGE_PROPERTY.KnockedUp: EditorGUILayout.PropertyField(this.spValueBool); break;
             }
 
 			this.serializedObject.ApplyModifiedProperties();

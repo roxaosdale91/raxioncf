@@ -80,15 +80,15 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   objectB:
-    target: 0
+    target: 4
     gameObject: {fileID: 0}
     global:
       allowTypesMask: 512
       name: 
     local:
       allowTypesMask: 512
-      name: 
-      targetType: 2
+      name: target
+      targetType: 1
       targetObject: {fileID: 0}
     list:
       targetType: 3

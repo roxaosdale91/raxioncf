@@ -63,6 +63,10 @@
         public bool isControllable = true;
         public bool isBusy = false;
 
+        public bool isKnockedUp = false;
+
+        public bool isDodging = false;
+
         public float runSpeed = 4.0f;
         public float angularSpeed = 540f;
         public float gravity = -9.81f;
@@ -152,6 +156,8 @@
         {
             this.SetDirectionalDirection(Vector3.zero);
             this.currentLocomotionSystem.Dash(direction, impulse, duration, drag);
+            
+            this.isDodging = false;
         }
 
         public void RootMovement(float impulse, float duration, float gravityInfluence,
