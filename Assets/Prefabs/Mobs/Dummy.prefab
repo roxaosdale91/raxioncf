@@ -3289,7 +3289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f6fcda176114231b71e606c347f970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isExpanded: 1
+  isExpanded: 0
   target:
     target: 3
     gameObject: {fileID: 5335682246339674711}
@@ -3872,6 +3872,7 @@ MonoBehaviour:
     isControllable: 1
     isBusy: 0
     isKnockedUp: 0
+    isDodging: 0
     runSpeed: 4
     angularSpeed: 540
     gravity: -9.81
@@ -4581,7 +4582,7 @@ MonoBehaviour:
   valueType: 0
   amount:
     optionIndex: 0
-    value: 10
+    value: 0
     global:
       allowTypesMask: 4
       name: 

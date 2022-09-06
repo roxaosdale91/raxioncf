@@ -15752,6 +15752,7 @@ MonoBehaviour:
   dashClipBackward: {fileID: 7400000, guid: 27ca10be42b15e04081bd1597181a792, type: 3}
   dashClipRight: {fileID: 7400000, guid: 76d280b5f2011fe459c337e49fdeb69e, type: 3}
   dashClipLeft: {fileID: 7400000, guid: 851185310778b5f469fe2c2710d902a1, type: 3}
+  waitTime: 0.5
 --- !u!114 &7723874935873434951
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -18117,6 +18118,7 @@ MonoBehaviour:
   dashClipBackward: {fileID: 7400000, guid: 27ca10be42b15e04081bd1597181a792, type: 3}
   dashClipRight: {fileID: 7400000, guid: 76d280b5f2011fe459c337e49fdeb69e, type: 3}
   dashClipLeft: {fileID: 7400000, guid: 851185310778b5f469fe2c2710d902a1, type: 3}
+  waitTime: 0.5
 --- !u!114 &8455264120699389623
 MonoBehaviour:
   m_ObjectHideFlags: 3
