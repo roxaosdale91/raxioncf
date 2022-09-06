@@ -61,4 +61,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 [Aa]ssets/[Pp]ackagedPrefabs/
-
+[Aa]ssets/_[Tt]errainAutoUpgrade/
+[Aa]ssets/_[Tt]errainAutoUpgrade/
+[Aa]ssets/[Ss]cenes/[Pp]rototype/*
