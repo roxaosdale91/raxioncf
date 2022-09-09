@@ -201,7 +201,7 @@ MonoBehaviour:
   EventAttackRecovery:
     m_PersistentCalls:
       m_Calls: []
-  enableWeaponTrail: 0
-  trailMaterial: {fileID: 0}
-  trailGranularity: 60
-  trailDuration: 0.5
+  enableWeaponTrail: 1
+  trailMaterial: {fileID: 2100000, guid: def77e74f8a514b82b0a0bf295b237ec, type: 2}
+  trailGranularity: 3
+  trailDuration: 0.1

@@ -185,7 +185,7 @@ MonoBehaviour:
   captureHits: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 128
   segmentResolution: 0.05
   pointA: {x: 0, y: 0, z: 0}
   pointB: {x: 0, y: 0, z: 1}

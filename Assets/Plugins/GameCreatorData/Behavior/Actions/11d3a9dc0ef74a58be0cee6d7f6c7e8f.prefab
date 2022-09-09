@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 6208066372259973907}
   - component: {fileID: 2792740099424004341}
   - component: {fileID: 412495230909266829}
-  - component: {fileID: 5194332658226071310}
+  - component: {fileID: 5395643358344841041}
+  - component: {fileID: -274350718355173365}
+  - component: {fileID: -502832786610132604}
   m_Layer: 0
   m_Name: 11d3a9dc0ef74a58be0cee6d7f6c7e8f
   m_TagString: Untagged
@@ -67,10 +69,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 5194332658226071310}
+  - {fileID: 5395643358344841041}
+  - {fileID: -274350718355173365}
+  - {fileID: -502832786610132604}
   executingIndex: -1
   isExecuting: 0
---- !u!114 &5194332658226071310
+--- !u!114 &5395643358344841041
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,32 +83,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 728463491564443066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d234afa27d82846abbf91e13c4f5eedf, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a93f1f947e69482dac99c3488751423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isExpanded: 1
-  valueFrom: 2
-  global:
-    allowTypesMask: -1
-    name: 
-  local:
-    allowTypesMask: -1
-    name: 
-    targetType: 2
-    targetObject: {fileID: 0}
-  list:
-    targetType: 3
-    targetObject: {fileID: 0}
-    select: 1
-    index: 0
-  variable:
-    variableType: 1
+  character:
+    target: 1
+    character: {fileID: 0}
+    local:
+      allowTypesMask: 512
+      name: 
+      targetType: 2
+      targetObject: {fileID: 0}
     global:
-      allowTypesMask: 8
+      allowTypesMask: 512
+      name: 
+    list:
+      targetType: 3
+      targetObject: {fileID: 0}
+      select: 1
+      index: 0
+    eventChangeVariable:
+      m_PersistentCalls:
+        m_Calls: []
+  target: 0
+  value:
+    target: 4
+    gameObject: {fileID: 0}
+    global:
+      allowTypesMask: 512
       name: 
     local:
-      allowTypesMask: 8
-      name: start
+      allowTypesMask: 512
+      name: target
       targetType: 1
       targetObject: {fileID: 0}
     list:
@@ -112,4 +123,52 @@ MonoBehaviour:
       targetObject: {fileID: 0}
       select: 1
       index: 0
-  value: 1
+    eventChangeVariable:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &-274350718355173365
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728463491564443066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38bf0f8c8fb12482d9662e19de74cbbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExpanded: 1
+  character:
+    target: 1
+    character: {fileID: 0}
+    local:
+      allowTypesMask: 512
+      name: 
+      targetType: 2
+      targetObject: {fileID: 0}
+    global:
+      allowTypesMask: 512
+      name: 
+    list:
+      targetType: 3
+      targetObject: {fileID: 0}
+      select: 1
+      index: 0
+    eventChangeVariable:
+      m_PersistentCalls:
+        m_Calls: []
+  key: 0
+--- !u!114 &-502832786610132604
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728463491564443066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6550f27470913457faef2f508a2dd80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExpanded: 1
