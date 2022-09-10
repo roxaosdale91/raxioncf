@@ -68,6 +68,7 @@
         public float pushForce = 50f;
 
         public bool isKnockup = false;
+        public bool isIgnorePrevious = false;
 
         public float poiseDamage = 2f;
         public float defenseDamage = 1f;
@@ -101,6 +102,8 @@
 
             melee.SetPosture(this.posture, this.Length);
             melee.PlayAudio(this.soundEffect);
+
+            melee.isIgnorePrevious = this.isIgnorePrevious;
 
             melee.Character.GetCharacterAnimator().StopGesture(0.1f);
             melee.Character.GetCharacterAnimator().CrossFadeGesture(

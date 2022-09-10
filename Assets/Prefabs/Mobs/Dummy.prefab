@@ -4620,7 +4620,7 @@ MonoBehaviour:
   valueType: 0
   amount:
     optionIndex: 0
-    value: 10
+    value: 0
     global:
       allowTypesMask: 4
       name: 

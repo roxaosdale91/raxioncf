@@ -106,6 +106,7 @@ using System.Threading.Tasks;
         public Character Character { get; protected set; }
         public CharacterAnimator CharacterAnimator { get; protected set; }
         public BladeComponent Blade { get; protected set; }
+        public Boolean isIgnorePrevious {get; set;}
 
         // INITIALIZERS: --------------------------------------------------------------------------
 
@@ -159,13 +160,13 @@ using System.Threading.Tasks;
 
                 if (this.Blade != null && phase == 1)
                 {
-                    GameObject[] hits = this.Blade.CaptureHits();
+                    GameObject[] hits = this.Blade.CaptureHits(this.isIgnorePrevious);
                     for (int i = 0; i < hits.Length; ++i)
                     {
                         int hitInstanceID = hits[i].GetInstanceID();
 
-                        if (this.targetsEvaluated.Contains(hitInstanceID)) continue;
-                        if (hits[i].transform.IsChildOf(this.transform)) continue;
+                        if (this.targetsEvaluated.Contains(hitInstanceID) && this.isIgnorePrevious == false) continue;
+                        if (hits[i].transform.IsChildOf(this.transform) && this.isIgnorePrevious == false) continue;
 
                         HitResult hitResult = HitResult.ReceiveDamage;
 
@@ -522,6 +523,7 @@ using System.Threading.Tasks;
             
 
             Debug.Log("CharacterMelee.cs: IsKnockup: " + attack.isKnockup);
+            Debug.Log("CharacterMelee.cs: isIgnorePrevious: " + attack.isIgnorePrevious);
             Debug.Log("CharacterMelee.cs: isAttack: " + attack.isAttack);
             Debug.Log("CharacterMelee.cs: isAttack: " + attack.isBlockable);
 
