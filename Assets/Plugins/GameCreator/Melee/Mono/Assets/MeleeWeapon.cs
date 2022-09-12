@@ -121,7 +121,7 @@
                 return this.knockbackReaction[index];
             }
 
-            switch (isGrounded)
+            switch (isGrounded || isKnockup)
             {
                 case true:
                     switch (frontalAttack)

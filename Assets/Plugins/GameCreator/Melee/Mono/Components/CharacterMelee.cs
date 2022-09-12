@@ -35,7 +35,7 @@ using System.Threading.Tasks;
         private const float TRANSITION = 0.15f;
 
         //Buffer window adjustment for animation cancelling
-        protected const float INPUT_BUFFER_TIME = 0.1f;
+        protected const float INPUT_BUFFER_TIME = 0.35f;
 
         private const CharacterAnimation.Layer LAYER_DEFEND = CharacterAnimation.Layer.Layer3;
 
@@ -402,6 +402,9 @@ using System.Threading.Tasks;
         {
             // Make sure to only stop attack sequence
             if(this != null && this.currentMeleeClip != null && this.currentMeleeClip.isAttack == true) {
+                if(this.inputBuffer.HasInput()) {
+                    this.inputBuffer.ConsumeInput();
+                }
                 this.comboSystem.Stop();
                 this.currentMeleeClip.Stop(this);
                 this.Blade.EventAttackEnd.Invoke();
