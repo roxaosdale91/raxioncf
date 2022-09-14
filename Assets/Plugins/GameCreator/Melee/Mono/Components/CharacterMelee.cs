@@ -291,6 +291,8 @@ using System.Threading.Tasks;
             if (this.IsAttacking) yield break;
             if (!this.CanAttack()) yield break;
 
+            CharacterAnimator _animator = this.Character.GetCharacterAnimator();
+
             yield return this.Sheathe();
 
             if (weapon != null)
@@ -313,7 +315,8 @@ using System.Threading.Tasks;
                     float time = this.ChangeState(
                         this.currentWeapon.characterState,
                         this.currentWeapon.characterMask,
-                        MeleeWeapon.LAYER_STANCE
+                        MeleeWeapon.LAYER_STANCE,
+                        _animator
                     );
 
                     if (state.enterClip != null) wait = new WaitForSeconds(time);
@@ -610,10 +613,13 @@ using System.Threading.Tasks;
             var characterLocomotion = this.Character.characterLocomotion;
 
 
-            if(charIsKnockedUp == false && attack.isKnockup == true) { // Check Previous Knockup Status
+            if(attack.isKnockup == true) { // Check Previous Knockup Status
                 characterLocomotion.isKnockedUp = true;
                 charIsKnockedUp = this.Character.isKnockedUp();
             }
+
+            // characterLocomotion.isKnockedUp = true;
+            // charIsKnockedUp = this.Character.isKnockedUp();
 
             MeleeClip hitReaction = this.currentWeapon.GetHitReaction(
                 this.Character.IsGrounded(),
@@ -690,7 +696,7 @@ using System.Threading.Tasks;
             return time;
         }
 
-        protected float ChangeState(CharacterState state, AvatarMask mask, CharacterAnimation.Layer layer)
+        protected float ChangeState(CharacterState state, AvatarMask mask, CharacterAnimation.Layer layer, CharacterAnimator _animator)
         {
             float time = TRANSITION;
             if (state != null)
@@ -702,6 +708,7 @@ using System.Threading.Tasks;
 
                 time = Mathf.Max(TRANSITION, time) * 0.5f;
                 this.CharacterAnimator.SetState(state, mask, 1f, time, 1f, layer);
+                 _animator.ResetControllerTopology(state.GetRuntimeAnimatorController());
             }
 
             return time;

@@ -300,6 +300,9 @@ namespace NJG.PUN.Melee
 
             yield return NetSheathe();
 
+            
+            CharacterAnimator _animator = Character.GetCharacterAnimator();
+
             if (weapon != null)
             {
                 currentWeapon = weapon;
@@ -315,7 +318,8 @@ namespace NJG.PUN.Melee
                     float time = ChangeState(
                         currentWeapon.characterState,
                         currentWeapon.characterMask,
-                        MeleeWeapon.LAYER_STANCE
+                        MeleeWeapon.LAYER_STANCE,
+                        _animator
                     );
 
                     if (state.enterClip != null) wait = new WaitForSeconds(time);
