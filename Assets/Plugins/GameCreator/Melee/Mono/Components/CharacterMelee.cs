@@ -607,40 +607,47 @@ using System.Threading.Tasks;
 
             this.AddPoise(-attack.poiseDamage);
             bool isFrontalAttack = attackAngle >= 90f;
-            bool isKnockback = this.Poise <= float.Epsilon;
+            bool isKnockedBack = this.Poise <= float.Epsilon;
 
-            bool charIsKnockedUp = this.Character.isKnockedUp();
+            bool isKnockedUp = this.Character.isKnockedUp();
             var characterLocomotion = this.Character.characterLocomotion;
 
+            bool isInitialKnockUp = false;
 
-            if(attack.isKnockup == true) { // Check Previous Knockup Status
-                characterLocomotion.isKnockedUp = true;
-                charIsKnockedUp = this.Character.isKnockedUp();
+            if(isKnockedBack == true ) {
+                characterLocomotion.isKnockedUp = false;
+            } else {
+                if (isKnockedUp == false && attack.isKnockup == true) {
+                    characterLocomotion.isKnockedUp = true;
+                    isInitialKnockUp = true;
+                }
+                else {
+                    characterLocomotion.isKnockedUp = this.Character.isKnockedUp();
+                }
             }
 
-            // characterLocomotion.isKnockedUp = true;
-            // charIsKnockedUp = this.Character.isKnockedUp();
+            isKnockedUp = this.Character.isKnockedUp();
 
             MeleeClip hitReaction = this.currentWeapon.GetHitReaction(
                 this.Character.IsGrounded(),
                 isFrontalAttack,
-                isKnockback,
-                this.Character.isKnockedUp()
+                isKnockedBack,
+                isKnockedUp
             );
 
             this.ExecuteEffects(
                 attacker.Blade.GetImpactPosition(),
-                isKnockback
+                isKnockedBack
                     ? attacker.currentWeapon.audioImpactKnockback
                     : attacker.currentWeapon.audioImpactNormal,
-                isKnockback
+                isKnockedBack
                     ? attacker.currentWeapon.prefabImpactKnockback
                     : attacker.currentWeapon.prefabImpactNormal
             );
 
             attack.ExecuteHitPause();
-
-            if (!this.IsUninterruptable && charIsKnockedUp == false)
+            Debug.Log("PUTANG INA MO!: " + (!this.IsUninterruptable && isInitialKnockUp == false));
+            if ((!this.IsUninterruptable && isInitialKnockUp == false) == true)
             {
                 hitReaction.Play(this);
             }

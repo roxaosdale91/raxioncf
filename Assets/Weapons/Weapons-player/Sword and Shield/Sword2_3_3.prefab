@@ -98,13 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ce5ca9303944be08d0e95a6aab1c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  captureHits: 2
+  captureHits: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 256
-  segmentResolution: 0.05
-  pointA: {x: 0, y: 0, z: 0}
-  pointB: {x: 0, y: 0, z: 1}
+  segmentResolution: 0.2
+  pointA: {x: 0, y: 1, z: 0}
+  pointB: {x: 0, y: -0.5, z: 0}
   radius: 0.5
   offset: {x: 0, y: 0, z: 0}
   boxInterframePredictions: 19
@@ -123,9 +123,9 @@ MonoBehaviour:
   EventAttackRecovery:
     m_PersistentCalls:
       m_Calls: []
-  enableWeaponTrail: 0
+  enableWeaponTrail: 1
   trailMaterial: {fileID: 2100000, guid: 0f6da1aa4c092794f8eabe6869cb6ad0, type: 2}
-  trailGranularity: 5
+  trailGranularity: 100
   trailDuration: 0.1
 --- !u!1001 &530902969479516494
 PrefabInstance:

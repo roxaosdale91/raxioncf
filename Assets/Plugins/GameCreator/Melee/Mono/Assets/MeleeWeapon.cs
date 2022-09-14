@@ -105,23 +105,34 @@
             return instance;
         }
 
-        public MeleeClip GetHitReaction(bool isGrounded, bool frontalAttack, bool isKnockback, bool isKnockup)
+        public enum SpecialHitReaction {
+            isKnockback = 0,
+            isInitialKnockUp = 1
+        }
+
+        public MeleeClip GetHitReaction(bool isGrounded, bool frontalAttack, bool isKnockback, bool isKnockedUp)
         {
             int index;
             MeleeClip meleeClip = null;
 
-            Debug.Log("MeleeWeapon.cs isKnockup: " + isKnockup);
-
-            if (isKnockback)
+            if (isKnockback) // Use index 0 always for knockback
             {
                 index = UnityEngine.Random.Range(0, this.knockbackReaction.Count - 1);
                 if (this.knockbackReaction.Count != 1 && index == this.prevRandomHit) index++;
                 this.prevRandomHit = index;
 
-                return this.knockbackReaction[index];
+                return this.knockbackReaction[0];
             }
 
-            switch (isGrounded || isKnockup)
+            if (isKnockedUp) {
+                 index = UnityEngine.Random.Range(0, this.airborneHitReactionsBehind.Count);
+                if (this.airborneHitReactionsBehind.Count != 1 && index == this.prevRandomHit) index++;
+                this.prevRandomHit = index;
+
+                return this.airborneHitReactionsBehind[index];
+            }
+
+            switch (isGrounded)
             {
                 case true:
                     switch (frontalAttack)
