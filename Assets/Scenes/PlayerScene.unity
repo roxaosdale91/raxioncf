@@ -1994,7 +1994,7 @@ MonoBehaviour:
   description: true
   conditionsList: {fileID: 336349131}
   actions: {fileID: 565214517}
-  isExpanded: 1
+  isExpanded: 0
   onCheckConditions:
     m_PersistentCalls:
       m_Calls: []
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   description: false
   conditionsList: {fileID: 336349135}
   actions: {fileID: 1164707129}
-  isExpanded: 0
+  isExpanded: 1
   onCheckConditions:
     m_PersistentCalls:
       m_Calls: []
@@ -8381,7 +8381,6 @@ GameObject:
   - component: {fileID: 1662892304}
   - component: {fileID: 1662892305}
   - component: {fileID: 1662892306}
-  - component: {fileID: 1662892308}
   - component: {fileID: 1662892309}
   - component: {fileID: 1662892310}
   m_Layer: 0
@@ -8425,7 +8424,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 1662892309}
-  - {fileID: 1662892308}
   - {fileID: 1662892310}
   - {fileID: 1662892306}
   executingIndex: -1
@@ -8488,62 +8486,6 @@ Transform:
   m_Father: {fileID: 1571292859}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1662892308
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662892303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48d7be1b910bc48cda9cb586c1cdce91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isExpanded: 0
-  character:
-    target: 2
-    character: {fileID: 2018962583}
-    local:
-      allowTypesMask: 512
-      name: 
-      targetType: 2
-      targetObject: {fileID: 0}
-    global:
-      allowTypesMask: 512
-      name: 
-    list:
-      targetType: 3
-      targetObject: {fileID: 0}
-      select: 1
-      index: 0
-    eventChangeVariable:
-      m_PersistentCalls:
-        m_Calls: []
-  action: 0
-  layer: 0
-  avatarMask: {fileID: 0}
-  state: 0
-  stateAsset: {fileID: 11400000, guid: 2acf9f1c9406813418aed15d63254633, type: 2}
-  stateClip: {fileID: 0}
-  weight: 1
-  transitionTime: 0.25
-  speed:
-    optionIndex: 0
-    value: 1
-    global:
-      allowTypesMask: 4
-      name: 
-    local:
-      allowTypesMask: 4
-      name: 
-      targetType: 2
-      targetObject: {fileID: 0}
-    list:
-      targetType: 3
-      targetObject: {fileID: 0}
-      select: 1
-      index: 0
 --- !u!114 &1662892309
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -8556,7 +8498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7488e222b11cb4789a359d6a20b1e33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isExpanded: 1
+  isExpanded: 0
   character:
     target: 2
     character: {fileID: 2018962583}
@@ -10262,7 +10204,7 @@ MonoBehaviour:
       value: {fileID: 0}
     varObj:
       value: {fileID: 0}
-  isExpanded: 1
+  isExpanded: 0
 --- !u!114 &2018962589
 MonoBehaviour:
   m_ObjectHideFlags: 0

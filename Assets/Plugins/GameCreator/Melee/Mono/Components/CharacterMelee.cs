@@ -635,6 +635,19 @@ using System.Threading.Tasks;
                 isKnockedUp
             );
 
+            CharacterAnimation.Layer layer = CharacterAnimation.Layer.Layer1;
+            //CHECK FOR STATE TO ASSIGN HERE
+            if(attack.stateEndAsset != null) {
+                this.Character.GetCharacterAnimator().SetState(
+                    attack.stateEndAsset,
+                    null,
+                    1.0f,
+                    0.25f,
+                    1.0f,
+                    layer
+                );
+            }
+
             this.ExecuteEffects(
                 attacker.Blade.GetImpactPosition(),
                 isKnockedBack

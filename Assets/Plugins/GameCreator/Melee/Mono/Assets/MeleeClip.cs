@@ -92,9 +92,9 @@
 
         public IActionsList actionsOnExecute;
         public IActionsList actionsOnHit;
+        public CharacterState stateEndAsset;
 
         // PUBLIC METHODS: ------------------------------------------------------------------------
-
         public void Play(CharacterMelee melee)
         {
             if (this.interruptible == Interrupt.Uninterruptible) melee.SetUninterruptable(this.Length);
