@@ -615,9 +615,9 @@ using System.Threading.Tasks;
 
             bool isInitialKnockUp = false;
 
-            if(isKnockBack == true) {
+            if(isKnockBack) {
                 characterLocomotion.isKnockedUp = !isKnockBack;
-            } else if (isKnockUp == true) {
+            } else if (isKnockUp) {
                 characterLocomotion.isKnockedUp = isKnockUp;
             } 
 
@@ -653,11 +653,6 @@ using System.Threading.Tasks;
             );
 
             attack.ExecuteHitPause();
-            
-            // if ((!this.IsUninterruptable && isInitialKnockUp == false) == true)
-            // {
-            //     hitReaction.Play(this);
-            // }
 
             if (!this.IsUninterruptable)
             {

@@ -106,7 +106,7 @@ MonoBehaviour:
   pointB: {x: 0, y: -0.5, z: 0}
   radius: 0.5
   offset: {x: 0, y: 0, z: 0}
-  boxInterframePredictions: 10
+  boxInterframePredictions: 19
   boxCenter: {x: 0, y: 0.23, z: 0}
   boxSize: {x: 0.4, y: 1.2, z: 0.4}
   debugMode: 0
