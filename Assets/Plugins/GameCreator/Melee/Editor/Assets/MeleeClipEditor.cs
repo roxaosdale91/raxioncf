@@ -51,6 +51,7 @@
         private SerializedProperty spAvatarMask;
         private SerializedProperty spTransitionIn;
         private SerializedProperty spTransitionOut;
+        private SerializedProperty spAnimationSpeed;
 
         private SerializedProperty spMovementForward;
         private SerializedProperty spMovementSides;
@@ -149,6 +150,7 @@
             this.spAvatarMask = this.serializedObject.FindProperty("avatarMask");
             this.spTransitionIn = this.serializedObject.FindProperty("transitionIn");
             this.spTransitionOut = this.serializedObject.FindProperty("transitionOut");
+            this.spAnimationSpeed = this.serializedObject.FindProperty("animSpeed");
 
             this.spMovementForward = this.serializedObject.FindProperty("movementForward");
             this.spMovementSides = this.serializedObject.FindProperty("movementSides");
@@ -329,6 +331,7 @@
                     EditorGUILayout.Space();
                     EditorGUILayout.PropertyField(this.spTransitionIn);
                     EditorGUILayout.PropertyField(this.spTransitionOut);
+                    EditorGUILayout.PropertyField(this.spAnimationSpeed);
 
                     EditorGUILayout.EndVertical();
                 }

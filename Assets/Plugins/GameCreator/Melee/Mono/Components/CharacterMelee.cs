@@ -607,37 +607,31 @@ using System.Threading.Tasks;
 
             this.AddPoise(-attack.poiseDamage);
             bool isFrontalAttack = attackAngle >= 90f;
-            bool isKnockedBack = this.Poise <= float.Epsilon;
+            bool isKnockBack = this.Poise <= float.Epsilon;
+            bool isKnockUp = attack.isKnockup;
 
             bool isKnockedUp = this.Character.isKnockedUp();
             var characterLocomotion = this.Character.characterLocomotion;
 
             bool isInitialKnockUp = false;
 
-            if(isKnockedBack == true ) {
-                characterLocomotion.isKnockedUp = false;
-            } else {
-                if (isKnockedUp == false && attack.isKnockup == true) {
-                    characterLocomotion.isKnockedUp = true;
-                    isInitialKnockUp = true;
-                }
-                else {
-                    characterLocomotion.isKnockedUp = this.Character.isKnockedUp();
-                }
-            }
-
-            isKnockedUp = this.Character.isKnockedUp();
+            if(isKnockBack == true) {
+                characterLocomotion.isKnockedUp = !isKnockBack;
+            } else if (isKnockUp == true) {
+                characterLocomotion.isKnockedUp = isKnockUp;
+            } 
 
             MeleeClip hitReaction = this.currentWeapon.GetHitReaction(
                 this.Character.IsGrounded(),
                 isFrontalAttack,
-                isKnockedBack,
-                isKnockedUp
+                isKnockBack,
+                isKnockedUp,
+                attack.isKnockup
             );
 
             CharacterAnimation.Layer layer = CharacterAnimation.Layer.Layer1;
             //CHECK FOR STATE TO ASSIGN HERE
-            if(attack.stateEndAsset != null) {
+            if(hitReaction.stateEndAsset != null) {
                 this.Character.GetCharacterAnimator().SetState(
                     attack.stateEndAsset,
                     null,
@@ -650,20 +644,26 @@ using System.Threading.Tasks;
 
             this.ExecuteEffects(
                 attacker.Blade.GetImpactPosition(),
-                isKnockedBack
+                isKnockBack
                     ? attacker.currentWeapon.audioImpactKnockback
                     : attacker.currentWeapon.audioImpactNormal,
-                isKnockedBack
+                isKnockBack
                     ? attacker.currentWeapon.prefabImpactKnockback
                     : attacker.currentWeapon.prefabImpactNormal
             );
 
             attack.ExecuteHitPause();
-            Debug.Log("PUTANG INA MO!: " + (!this.IsUninterruptable && isInitialKnockUp == false));
-            if ((!this.IsUninterruptable && isInitialKnockUp == false) == true)
+            
+            // if ((!this.IsUninterruptable && isInitialKnockUp == false) == true)
+            // {
+            //     hitReaction.Play(this);
+            // }
+
+            if (!this.IsUninterruptable)
             {
                 hitReaction.Play(this);
             }
+
             return HitResult.ReceiveDamage;
         }
 

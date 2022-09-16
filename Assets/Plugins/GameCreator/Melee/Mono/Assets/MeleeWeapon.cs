@@ -110,11 +110,19 @@
             isInitialKnockUp = 1
         }
 
-        public MeleeClip GetHitReaction(bool isGrounded, bool frontalAttack, bool isKnockback, bool isKnockedUp)
+        public MeleeClip GetHitReaction(bool isGrounded, bool frontalAttack, bool isKnockback, bool isKnockedUp, bool isAttackKnockup)
         {
             int index;
             MeleeClip meleeClip = null;
+            if(isAttackKnockup)  // Use index 1 always for knockup
+            {
+                index = UnityEngine.Random.Range(0, this.knockbackReaction.Count - 1);
+                if (this.knockbackReaction.Count != 1 && index == this.prevRandomHit) index++;
+                this.prevRandomHit = index;
 
+                return this.knockbackReaction[1];
+            }
+            
             if (isKnockback) // Use index 0 always for knockback
             {
                 index = UnityEngine.Random.Range(0, this.knockbackReaction.Count - 1);
@@ -125,11 +133,18 @@
             }
 
             if (isKnockedUp) {
-                 index = UnityEngine.Random.Range(0, this.airborneHitReactionsBehind.Count);
-                if (this.airborneHitReactionsBehind.Count != 1 && index == this.prevRandomHit) index++;
-                this.prevRandomHit = index;
+                 var seed = 0;
+                 var indexAnim = 0;
+                 var lowerBound = 0;
+                 var upperBound = 1;
 
-                return this.airborneHitReactionsBehind[index];
+                if(this.airborneHitReactionsBehind.Count != 1) upperBound = this.airborneHitReactionsBehind.Count;
+
+                System.Random randomizer = new System.Random();
+
+                indexAnim = randomizer.Next(lowerBound, upperBound);
+
+                return this.airborneHitReactionsBehind[indexAnim];
             }
 
             switch (isGrounded)
