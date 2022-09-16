@@ -26,7 +26,9 @@
             MaxFallSpeed,
             CanJump,
             Busy,
-            KnockedUp
+            KnockedUp,
+            KnockedDown
+
 		}
 
         public TargetCharacter target = new TargetCharacter(TargetCharacter.Target.Player);
@@ -87,8 +89,11 @@
 	                    break;
                     
                     case CHANGE_PROPERTY.KnockedUp:
-                        Debug.Log("KNOCKED UP: NEW VALUE: " + this.valueBool.GetValue(target));
 	                    charTarget.characterLocomotion.isKnockedUp = this.valueBool.GetValue(target);
+	                    break;
+
+                    case CHANGE_PROPERTY.KnockedDown:
+	                    charTarget.characterLocomotion.IsKnockedDown = this.valueBool.GetValue(target);
 	                    break;
                 }
             }

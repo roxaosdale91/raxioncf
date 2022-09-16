@@ -65,6 +65,8 @@
 
         public bool isKnockedUp = false;
 
+        public bool IsKnockedDown = false;
+
         public bool isDodging = false;
 
         public float runSpeed = 4.0f;

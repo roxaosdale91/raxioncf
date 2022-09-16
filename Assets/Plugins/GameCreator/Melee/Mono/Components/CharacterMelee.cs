@@ -36,6 +36,7 @@ using System.Threading.Tasks;
 
         //Buffer window adjustment for animation cancelling
         protected const float INPUT_BUFFER_TIME = 0.35f;
+        protected const float COMBO_BUFFER_TIME = 0.50f;
 
         private const CharacterAnimation.Layer LAYER_DEFEND = CharacterAnimation.Layer.Layer3;
 
@@ -49,6 +50,8 @@ using System.Threading.Tasks;
 
         protected ComboSystem comboSystem;
         protected InputBuffer inputBuffer;
+
+        protected InputBuffer comboBuffer;
 
         public float Poise { get; protected set; }
         private float poiseDelayCooldown;
@@ -526,12 +529,6 @@ using System.Threading.Tasks;
 
         public HitResult OnReceiveAttack(CharacterMelee attacker, MeleeClip attack)
         {
-            
-
-            Debug.Log("CharacterMelee.cs: IsKnockup: " + attack.isKnockup);
-            Debug.Log("CharacterMelee.cs: isIgnorePrevious: " + attack.isIgnorePrevious);
-            Debug.Log("CharacterMelee.cs: isAttack: " + attack.isAttack);
-            Debug.Log("CharacterMelee.cs: isAttack: " + attack.isBlockable);
 
             if (this.currentWeapon == null) return HitResult.ReceiveDamage;
             if (this.IsInvincible) return HitResult.Ignore;

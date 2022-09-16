@@ -209,6 +209,11 @@
             return this.characterLocomotion.isKnockedUp;
         }
 
+        public bool IsKnockedDown() {
+            if (this.characterLocomotion == null) return false;
+            return this.characterLocomotion.IsKnockedDown;
+        }
+
         public bool isDodging()
         {
             if (this.characterLocomotion == null) return false;
@@ -240,7 +245,8 @@
             if (this.characterState == null) return true;
             return Mathf.Approximately(this.characterState.isGrounded, 1.0f);
         }
-
+        
+        
         public CharacterAnimator GetCharacterAnimator()
         {
             return this.animator;

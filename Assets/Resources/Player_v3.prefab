@@ -14744,7 +14744,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   drawPreviousWeapon: 0
-  meleeWeapon: {fileID: 11400000, guid: 16fdcf667d639264d80dd5253feb3914, type: 2}
+  meleeWeapon: {fileID: 11400000, guid: 995b7eef14bb0634c87c1cde0237e5e4, type: 2}
   meleeShield: {fileID: 0}
 --- !u!114 &7723874935646795696
 MonoBehaviour:
@@ -15711,6 +15711,7 @@ MonoBehaviour:
     isControllable: 0
     isBusy: 0
     isKnockedUp: 0
+    IsKnockedDown: 0
     isDodging: 0
     runSpeed: 6
     angularSpeed: 620

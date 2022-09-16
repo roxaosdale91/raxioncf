@@ -24,7 +24,8 @@
             CanRun,
             CanJump,
             isKnockUp,
-            isDodging
+            isDodging,
+            IsKnockedDown
         }
 
         public TargetCharacter target;
@@ -76,8 +77,12 @@
 
                 case CharacterProperty.isKnockUp:
                     if (character.characterLocomotion != null)
-                        Debug.Log("KNOCKED UP: FROM CODE: " + character.isKnockedUp());
                         result = character.isKnockedUp();
+                    break;
+
+                case CharacterProperty.IsKnockedDown:
+                    if (character.characterLocomotion != null)
+                        result = character.IsKnockedDown();
                     break;
 
                 case CharacterProperty.isDodging:
