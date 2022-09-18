@@ -7,6 +7,7 @@
         public float timeWindow;
 
         protected float inputTime;
+        protected float comboTime;
         protected CharacterMelee.ActionKey key;
 
         // CONSTRUCTOR: ---------------------------------------------------------------------------
@@ -16,6 +17,7 @@
             this.timeWindow = timeWindow;
 
             this.inputTime = -100f;
+            this.comboTime = -100f;
             this.key = CharacterMelee.ActionKey.A;
         }
 
@@ -27,10 +29,22 @@
             this.inputTime = Time.time;
         }
 
+        public virtual void ComboTriggered()
+        {
+            this.comboTime = Time.time;
+        }
+
         public virtual bool HasInput()
         {
             if (this.inputTime <= 0f) return false;
             return Time.time - this.inputTime <= this.timeWindow;
+        }
+        
+        public virtual bool DidCombo()
+        {
+            // if (this.comboTime <= 0f) return false;
+            var getComboTime = Time.time - this.comboTime;
+            return getComboTime <= this.timeWindow;
         }
 
         public CharacterMelee.ActionKey GetInput()
@@ -39,6 +53,11 @@
         }
 
         public void ConsumeInput()
+        {
+            this.inputTime = -100f;
+        }
+
+        public void ConsumeCombo()
         {
             this.inputTime = -100f;
         }

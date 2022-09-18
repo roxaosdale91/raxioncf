@@ -144,7 +144,32 @@
 
                 indexAnim = randomizer.Next(lowerBound, upperBound);
 
-                return this.airborneHitReactionsBehind[indexAnim];
+                switch (frontalAttack)
+                    {
+                        case true:
+                            index = UnityEngine.Random.Range(0, this.airborneHitReactionsFront.Count);
+                            if (this.airborneHitReactionsFront.Count != 1 && index == this.prevRandomHit) index++;
+                            this.prevRandomHit = index;
+                            upperBound = this.airborneHitReactionsFront.Count;
+
+                            indexAnim = randomizer.Next(lowerBound, upperBound);
+
+                            meleeClip = this.airborneHitReactionsFront[indexAnim];
+                            break;
+
+                        case false:
+                            index = UnityEngine.Random.Range(0, this.airborneHitReactionsBehind.Count);
+                            if (this.airborneHitReactionsBehind.Count != 1 && index == this.prevRandomHit) index++;
+                            this.prevRandomHit = index;
+                            upperBound = this.airborneHitReactionsBehind.Count;
+
+                            indexAnim = randomizer.Next(lowerBound, upperBound);
+
+                            meleeClip = this.airborneHitReactionsBehind[indexAnim];
+                            break;
+                    }
+
+                return meleeClip;
             }
 
             switch (isGrounded)

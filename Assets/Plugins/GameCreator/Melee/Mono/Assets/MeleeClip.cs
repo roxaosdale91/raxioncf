@@ -100,7 +100,6 @@
         public void Play(CharacterMelee melee)
         {
 
-
             if (this.interruptible == Interrupt.Uninterruptible) melee.SetUninterruptable(this.Length);
             if (this.vulnerability == Vulnerable.Invincible) melee.SetInvincibility(this.Length);
 
@@ -128,6 +127,10 @@
 
             this.ExecuteActionsOnStart(melee.Blade.GetImpactPosition(), melee.gameObject);
             
+            // if(!melee.IsAttacking && melee.Character.isKnockedUp()) {
+            //     melee.comboBuffer.ConsumeCombo();
+            // }
+
             
         }
 

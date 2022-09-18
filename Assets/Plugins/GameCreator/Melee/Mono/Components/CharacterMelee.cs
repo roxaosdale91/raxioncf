@@ -35,8 +35,8 @@ using System.Threading.Tasks;
         private const float TRANSITION = 0.15f;
 
         //Buffer window adjustment for animation cancelling
-        protected const float INPUT_BUFFER_TIME = 0.35f;
-        protected const float COMBO_BUFFER_TIME = 0.50f;
+        protected const float INPUT_BUFFER_TIME = 0.10f;
+        protected const float COMBO_BUFFER_TIME = 1.6f;
 
         private const CharacterAnimation.Layer LAYER_DEFEND = CharacterAnimation.Layer.Layer3;
 
@@ -51,7 +51,7 @@ using System.Threading.Tasks;
         protected ComboSystem comboSystem;
         protected InputBuffer inputBuffer;
 
-        protected InputBuffer comboBuffer;
+        public InputBuffer comboBuffer {get; protected set;}
 
         public float Poise { get; protected set; }
         private float poiseDelayCooldown;
@@ -118,6 +118,7 @@ using System.Threading.Tasks;
             this.Character = GetComponent<Character>();
             this.CharacterAnimator = GetComponent<CharacterAnimator>();
             this.inputBuffer = new InputBuffer(INPUT_BUFFER_TIME);
+            this.comboBuffer = new InputBuffer(COMBO_BUFFER_TIME);
         }
 
         // UPDATE: --------------------------------------------------------------------------------
@@ -606,17 +607,30 @@ using System.Threading.Tasks;
             bool isFrontalAttack = attackAngle >= 90f;
             bool isKnockBack = this.Poise <= float.Epsilon;
             bool isKnockUp = attack.isKnockup;
-
-            bool isKnockedUp = this.Character.isKnockedUp();
             var characterLocomotion = this.Character.characterLocomotion;
 
             bool isInitialKnockUp = false;
 
+            
+            
+            bool isKnockedUp = this.Character.isKnockedUp();
+
             if(isKnockBack) {
                 characterLocomotion.isKnockedUp = !isKnockBack;
             } else if (isKnockUp) {
+                // characterLocomotion.isKnockedUp = isKnockedUp == false ? isKnockUp : false;
                 characterLocomotion.isKnockedUp = isKnockUp;
-            } 
+            }
+
+            isKnockedUp = this.Character.isKnockedUp();
+
+            bool recentlyDidCombo = false;
+            
+            if(isKnockedUp && !isKnockUp) {
+                recentlyDidCombo = this.comboBuffer.DidCombo();
+                Debug.Log("recentlyDidCombo: " + recentlyDidCombo);
+                isKnockedUp = recentlyDidCombo == false ? false : true;
+            }
 
             MeleeClip hitReaction = this.currentWeapon.GetHitReaction(
                 this.Character.IsGrounded(),
@@ -653,8 +667,12 @@ using System.Threading.Tasks;
 
             if (!this.IsUninterruptable)
             {
+                if(isKnockedUp) {
+                    this.comboBuffer.ComboTriggered();
+                }
                 hitReaction.Play(this);
             }
+                        
 
             return HitResult.ReceiveDamage;
         }
