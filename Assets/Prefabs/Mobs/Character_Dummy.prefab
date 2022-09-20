@@ -2086,7 +2086,6 @@ GameObject:
   - component: {fileID: 3627716088401723175}
   - component: {fileID: 3627716088401723174}
   - component: {fileID: 3627716088401723173}
-  - component: {fileID: 3627716088401723168}
   m_Layer: 8
   m_Name: CharacterAttachments
   m_TagString: Untagged
@@ -2143,7 +2142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 3627716088401723173}
-  - {fileID: 3627716088401723168}
   executingIndex: -1
   isExecuting: 0
 --- !u!114 &3627716088401723173
@@ -2158,7 +2156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842a04b05a7094a5ea359d4cb24d968a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isExpanded: 1
+  isExpanded: 0
   character:
     target: 2
     character: {fileID: 3627716088606962979}
@@ -2181,57 +2179,6 @@ MonoBehaviour:
   drawPreviousWeapon: 0
   meleeWeapon: {fileID: 11400000, guid: 0808ee771e98f5a4abf1308e52a72c58, type: 2}
   meleeShield: {fileID: 0}
---- !u!114 &3627716088401723168
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3627716088401723195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f4d1891530f1460fbb73e8685a95479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isExpanded: 1
-  character:
-    target: 2
-    character: {fileID: 0}
-    local:
-      allowTypesMask: 512
-      name: 
-      targetType: 2
-      targetObject: {fileID: 0}
-    global:
-      allowTypesMask: 512
-      name: 
-    list:
-      targetType: 3
-      targetObject: {fileID: 0}
-      select: 1
-      index: 0
-    eventChangeVariable:
-      m_PersistentCalls:
-        m_Calls: []
-  direction: 0
-  directionTarget:
-    target: 3
-    offset: {x: 0, y: 0, z: 0}
-    targetTransform: {fileID: 0}
-    targetPosition: {x: 0, y: 0, z: 0}
-    local:
-      allowTypesMask: -1
-      name: 
-      targetType: 2
-      targetObject: {fileID: 0}
-    global:
-      allowTypesMask: -1
-      name: 
-    list:
-      targetType: 3
-      targetObject: {fileID: 0}
-      select: 1
-      index: 0
 --- !u!1 &3627716088583617767
 GameObject:
   m_ObjectHideFlags: 0

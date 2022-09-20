@@ -7,12 +7,15 @@
     using UnityEngine.AI;
     using UnityEngine.SceneManagement;
     using GameCreator.Core;
+    using GameCreator.Melee;
     using System;
 
     [RequireComponent(typeof(CharacterController))]
     [AddComponentMenu("Game Creator/Characters/Character", 100)]
     public class Character : GlobalID, IGameSave
     {
+        
+        protected const float DOWN_BUFFER_TIME = 5.0f;
         [System.Serializable]
         public class State
         {
@@ -92,6 +95,8 @@
         public bool save;
         protected SaveData initSaveData = new SaveData();
 
+        public InputBuffer downBuffer {get; protected set;} 
+
         // INITIALIZERS: --------------------------------------------------------------------------
 
         protected override void Awake()
@@ -100,6 +105,7 @@
 
             if (!Application.isPlaying) return;
             this.CharacterAwake();
+            this.downBuffer = new InputBuffer(DOWN_BUFFER_TIME);
 
             this.initSaveData = new SaveData()
             {
@@ -154,6 +160,14 @@
         private void LateUpdate()
         {
             if (!Application.isPlaying) return;
+
+            if(this.IsKnockedDown() && this.downBuffer.WasKnockedDown() == false) {
+                // RESET STATE FROM DOWN HERE
+                this.GetCharacterAnimator().ResetState( 0.25f, CharacterAnimation.Layer.Layer1);
+                this.downBuffer.ConsumeDown();
+                this.characterLocomotion.IsKnockedDown = false;
+                this.characterLocomotion.isKnockedUp = false;
+            }
             if (this.ragdoll != null && this.ragdoll.GetState() != CharacterRagdoll.State.Normal)
             {
                 this.ragdoll.Update();
@@ -212,6 +226,10 @@
         public bool IsKnockedDown() {
             if (this.characterLocomotion == null) return false;
             return this.characterLocomotion.IsKnockedDown;
+        }
+
+        public void InvokeKnockDown() {
+            this.downBuffer.KnockDown();
         }
 
         public bool isDodging()

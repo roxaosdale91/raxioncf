@@ -35,8 +35,9 @@ using System.Threading.Tasks;
         private const float TRANSITION = 0.15f;
 
         //Buffer window adjustment for animation cancelling
-        protected const float INPUT_BUFFER_TIME = 0.10f;
-        protected const float COMBO_BUFFER_TIME = 1.6f;
+        protected const float INPUT_BUFFER_TIME = 0.09f;
+        protected const float COMBO_BUFFER_TIME = 2.0f;
+        protected const float DOWN_BUFFER_TIME = 5.0f;
 
         private const CharacterAnimation.Layer LAYER_DEFEND = CharacterAnimation.Layer.Layer3;
 
@@ -52,6 +53,8 @@ using System.Threading.Tasks;
         protected InputBuffer inputBuffer;
 
         public InputBuffer comboBuffer {get; protected set;}
+
+        public InputBuffer downBuffer {get; protected set;}
 
         public float Poise { get; protected set; }
         private float poiseDelayCooldown;
@@ -119,6 +122,7 @@ using System.Threading.Tasks;
             this.CharacterAnimator = GetComponent<CharacterAnimator>();
             this.inputBuffer = new InputBuffer(INPUT_BUFFER_TIME);
             this.comboBuffer = new InputBuffer(COMBO_BUFFER_TIME);
+            this.downBuffer = new InputBuffer(DOWN_BUFFER_TIME);
         }
 
         // UPDATE: --------------------------------------------------------------------------------
@@ -177,6 +181,11 @@ using System.Threading.Tasks;
                         CharacterMelee targetMelee = hits[i].GetComponent<CharacterMelee>();
                         MeleeClip attack = this.comboSystem.GetCurrentClip();
 
+                        // bool wasKnockedDown = targetMelee.downBuffer.WasKnockedDown();
+
+                        // if(targetMelee.Character.IsKnockedDown() && wasKnockedDown == false) {
+                        //     Debug.Log("STAND UP!!");
+                        // }
                         if (targetMelee != null)
                         {
                             hitResult = targetMelee.OnReceiveAttack(this, attack);
@@ -531,14 +540,20 @@ using System.Threading.Tasks;
         public HitResult OnReceiveAttack(CharacterMelee attacker, MeleeClip attack)
         {
 
+            CharacterMelee melee = this.Character.GetComponent<CharacterMelee>();
+
             if (this.currentWeapon == null) return HitResult.ReceiveDamage;
             if (this.IsInvincible) return HitResult.Ignore;
+            if (this.Character.IsKnockedDown()) return HitResult.Ignore;
 
             if (this.Blade == null)
             {
                 Debug.LogError("No BladeComponent found. Add one in your Weapon Asset", this);
                 return HitResult.Ignore;
             }
+
+            Vector3 bladeDelta = this.Blade.transform.position - (this.transform.position + this.Character.characterLocomotion.characterController.center);
+            
 
             float attackAngle = Vector3.Angle(
                 attacker.transform.TransformDirection(Vector3.forward),
@@ -612,13 +627,15 @@ using System.Threading.Tasks;
             bool isInitialKnockUp = false;
 
             
-            
+            bool isKnockedDown = this.Character.IsKnockedDown();
             bool isKnockedUp = this.Character.isKnockedUp();
 
             if(isKnockBack) {
                 characterLocomotion.isKnockedUp = !isKnockBack;
+                    melee.SetInvincibility(5.0f);
+                    characterLocomotion.IsKnockedDown = true;
+                    this.Character.InvokeKnockDown();
             } else if (isKnockUp) {
-                // characterLocomotion.isKnockedUp = isKnockedUp == false ? isKnockUp : false;
                 characterLocomotion.isKnockedUp = isKnockUp;
             }
 
@@ -630,6 +647,13 @@ using System.Threading.Tasks;
                 recentlyDidCombo = this.comboBuffer.DidCombo();
                 Debug.Log("recentlyDidCombo: " + recentlyDidCombo);
                 isKnockedUp = recentlyDidCombo == false ? false : true;
+
+                if(recentlyDidCombo == false && melee != null) {
+                    melee.SetInvincibility(5.0f);
+                    characterLocomotion.IsKnockedDown = true;
+                    this.Character.InvokeKnockDown();
+                    return HitResult.Ignore;
+                }
             }
 
             MeleeClip hitReaction = this.currentWeapon.GetHitReaction(
@@ -644,7 +668,7 @@ using System.Threading.Tasks;
             //CHECK FOR STATE TO ASSIGN HERE
             if(hitReaction.stateEndAsset != null) {
                 this.Character.GetCharacterAnimator().SetState(
-                    attack.stateEndAsset,
+                    hitReaction.stateEndAsset,
                     null,
                     1.0f,
                     0.25f,

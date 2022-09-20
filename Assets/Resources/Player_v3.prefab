@@ -16532,8 +16532,8 @@ MonoBehaviour:
     isDodging: 0
     runSpeed: 6
     angularSpeed: 620
-    gravity: -9.81
-    maxFallSpeed: -100
+    gravity: -10.81
+    maxFallSpeed: 1000
     canRun: 1
     canJump: 1
     jumpForce: 6

@@ -120,7 +120,18 @@
                 if (this.knockbackReaction.Count != 1 && index == this.prevRandomHit) index++;
                 this.prevRandomHit = index;
 
-                return this.knockbackReaction[1];
+                switch (frontalAttack)
+                {
+                    case true:
+                        meleeClip = this.knockbackReaction[1];
+                        break;
+
+                    case false:
+                        meleeClip = this.knockbackReaction[2];
+                        break;
+                }
+
+                return meleeClip;
             }
             
             if (isKnockback) // Use index 0 always for knockback
@@ -128,6 +139,7 @@
                 index = UnityEngine.Random.Range(0, this.knockbackReaction.Count - 1);
                 if (this.knockbackReaction.Count != 1 && index == this.prevRandomHit) index++;
                 this.prevRandomHit = index;
+                
 
                 return this.knockbackReaction[0];
             }
@@ -145,29 +157,29 @@
                 indexAnim = randomizer.Next(lowerBound, upperBound);
 
                 switch (frontalAttack)
-                    {
-                        case true:
-                            index = UnityEngine.Random.Range(0, this.airborneHitReactionsFront.Count);
-                            if (this.airborneHitReactionsFront.Count != 1 && index == this.prevRandomHit) index++;
-                            this.prevRandomHit = index;
-                            upperBound = this.airborneHitReactionsFront.Count;
+                {
+                    case true:
+                        index = UnityEngine.Random.Range(0, this.airborneHitReactionsFront.Count);
+                        if (this.airborneHitReactionsFront.Count != 1 && index == this.prevRandomHit) index++;
+                        this.prevRandomHit = index;
+                        upperBound = this.airborneHitReactionsFront.Count;
 
-                            indexAnim = randomizer.Next(lowerBound, upperBound);
+                        indexAnim = randomizer.Next(lowerBound, upperBound);
 
-                            meleeClip = this.airborneHitReactionsFront[indexAnim];
-                            break;
+                        meleeClip = this.airborneHitReactionsFront[indexAnim];
+                        break;
 
-                        case false:
-                            index = UnityEngine.Random.Range(0, this.airborneHitReactionsBehind.Count);
-                            if (this.airborneHitReactionsBehind.Count != 1 && index == this.prevRandomHit) index++;
-                            this.prevRandomHit = index;
-                            upperBound = this.airborneHitReactionsBehind.Count;
+                    case false:
+                        index = UnityEngine.Random.Range(0, this.airborneHitReactionsBehind.Count);
+                        if (this.airborneHitReactionsBehind.Count != 1 && index == this.prevRandomHit) index++;
+                        this.prevRandomHit = index;
+                        upperBound = this.airborneHitReactionsBehind.Count;
 
-                            indexAnim = randomizer.Next(lowerBound, upperBound);
+                        indexAnim = randomizer.Next(lowerBound, upperBound);
 
-                            meleeClip = this.airborneHitReactionsBehind[indexAnim];
-                            break;
-                    }
+                        meleeClip = this.airborneHitReactionsBehind[indexAnim];
+                        break;
+                }
 
                 return meleeClip;
             }
@@ -186,7 +198,7 @@
                             break;
 
                         case false:
-                            index = UnityEngine.Random.Range(0, this.groundHitReactionsBehind.Count);
+                            index = UnityEngine.Random.Range(0, this.groundHitReactionsBehind.Count - 1);
                             if (this.groundHitReactionsBehind.Count != 1 && index == this.prevRandomHit) index++;
                             this.prevRandomHit = index;
 
@@ -199,7 +211,7 @@
                     switch (frontalAttack)
                     {
                         case true:
-                            index = UnityEngine.Random.Range(0, this.airborneHitReactionsFront.Count);
+                            index = UnityEngine.Random.Range(0, this.airborneHitReactionsFront.Count - 1);
                             if (this.airborneHitReactionsFront.Count != 1 && index == this.prevRandomHit) index++;
                             this.prevRandomHit = index;
 
@@ -207,7 +219,7 @@
                             break;
 
                         case false:
-                            index = UnityEngine.Random.Range(0, this.airborneHitReactionsBehind.Count);
+                            index = UnityEngine.Random.Range(0, this.airborneHitReactionsBehind.Count - 1);
                             if (this.airborneHitReactionsBehind.Count != 1 && index == this.prevRandomHit) index++;
                             this.prevRandomHit = index;
 
