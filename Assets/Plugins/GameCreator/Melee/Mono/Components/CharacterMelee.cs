@@ -35,7 +35,7 @@ using System.Threading.Tasks;
         private const float TRANSITION = 0.15f;
 
         //Buffer window adjustment for animation cancelling
-        protected const float INPUT_BUFFER_TIME = 0.09f;
+        protected const float INPUT_BUFFER_TIME = 0.1f;
         protected const float COMBO_BUFFER_TIME = 2.0f;
         protected const float DOWN_BUFFER_TIME = 5.0f;
 
@@ -633,24 +633,22 @@ using System.Threading.Tasks;
             if(isKnockBack) {
                 characterLocomotion.isKnockedUp = !isKnockBack;
                     melee.SetInvincibility(5.0f);
-                    characterLocomotion.IsKnockedDown = true;
                     this.Character.InvokeKnockDown();
             } else if (isKnockUp) {
                 characterLocomotion.isKnockedUp = isKnockUp;
+                characterLocomotion.isControllable = false;
             }
 
             isKnockedUp = this.Character.isKnockedUp();
 
             bool recentlyDidCombo = false;
             
-            if(isKnockedUp && !isKnockUp) {
+            if(isKnockedUp && !isKnockUp && this.comboBuffer != null) {
                 recentlyDidCombo = this.comboBuffer.DidCombo();
-                Debug.Log("recentlyDidCombo: " + recentlyDidCombo);
                 isKnockedUp = recentlyDidCombo == false ? false : true;
 
                 if(recentlyDidCombo == false && melee != null) {
                     melee.SetInvincibility(5.0f);
-                    characterLocomotion.IsKnockedDown = true;
                     this.Character.InvokeKnockDown();
                     return HitResult.Ignore;
                 }
@@ -691,7 +689,7 @@ using System.Threading.Tasks;
 
             if (!this.IsUninterruptable)
             {
-                if(isKnockedUp) {
+                if(isKnockedUp && this.comboBuffer != null) {
                     this.comboBuffer.ComboTriggered();
                 }
                 hitReaction.Play(this);

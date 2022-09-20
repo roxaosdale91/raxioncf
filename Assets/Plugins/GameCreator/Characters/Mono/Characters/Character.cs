@@ -105,7 +105,6 @@
 
             if (!Application.isPlaying) return;
             this.CharacterAwake();
-            this.downBuffer = new InputBuffer(DOWN_BUFFER_TIME);
 
             this.initSaveData = new SaveData()
             {
@@ -121,6 +120,8 @@
 
         protected void CharacterAwake()
         {
+            
+            this.downBuffer = new InputBuffer(DOWN_BUFFER_TIME);
             if (!Application.isPlaying) return;
             this.animator = GetComponent<CharacterAnimator>();
             this.characterLocomotion.Setup(this);
@@ -161,12 +162,13 @@
         {
             if (!Application.isPlaying) return;
 
-            if(this.IsKnockedDown() && this.downBuffer.WasKnockedDown() == false) {
+            if(this.characterLocomotion.IsKnockedDown && this.downBuffer.WasKnockedDown() == false) {
                 // RESET STATE FROM DOWN HERE
                 this.GetCharacterAnimator().ResetState( 0.25f, CharacterAnimation.Layer.Layer1);
                 this.downBuffer.ConsumeDown();
                 this.characterLocomotion.IsKnockedDown = false;
                 this.characterLocomotion.isKnockedUp = false;
+                this.characterLocomotion.isControllable = true;
             }
             if (this.ragdoll != null && this.ragdoll.GetState() != CharacterRagdoll.State.Normal)
             {
@@ -229,6 +231,8 @@
         }
 
         public void InvokeKnockDown() {
+            this.characterLocomotion.IsKnockedDown = true;
+            this.characterLocomotion.isControllable = false;
             this.downBuffer.KnockDown();
         }
 
