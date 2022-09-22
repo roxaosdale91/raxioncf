@@ -329,6 +329,7 @@
                 clip, avatarMask,
                 transitionIn, transitionOut, speed
             );
+            if(this.character.characterLocomotion.isDodging) this.character.characterLocomotion.isDodging = false;
         }
 
         public void CrossFadeGesture(RuntimeAnimatorController rtc, float speed, AvatarMask avatarMask = null,

@@ -158,8 +158,6 @@
         {
             this.SetDirectionalDirection(Vector3.zero);
             this.currentLocomotionSystem.Dash(direction, impulse, duration, drag);
-            
-            this.isDodging = false;
         }
 
         public void RootMovement(float impulse, float duration, float gravityInfluence,

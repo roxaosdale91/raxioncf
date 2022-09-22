@@ -326,13 +326,12 @@
         {
             if (this.characterLocomotion.isBusy) return false;
 
-            this.characterLocomotion.isDodging = true;
-
             this.characterLocomotion.Stop();
 
             this.characterLocomotion.Dash(direction, impulse, duration, drag);
             if (this.animator != null) this.animator.Dash();
             if (this.onDash != null) this.onDash.Invoke();
+
             return true;
         }
 

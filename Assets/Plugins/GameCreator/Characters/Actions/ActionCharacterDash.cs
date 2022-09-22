@@ -62,7 +62,6 @@
 
             if (melee != null)
 			{
-                melee.IsDodging = true;
 				if(melee.currentMeleeClip != null && melee.currentMeleeClip.isAttack == true) {
                     melee.StopAttack();
 					animator.StopGesture(0f);
@@ -141,11 +140,10 @@
             
             if (isDashing && clip != null && animator != null)
             {
+                locomotion.isDodging = true;
                 animator.CrossFadeGesture(clip, 1f, null, 0.05f, 0.5f);
             }
 
-
-            melee.IsDodging = false;
             return true;
         }
 

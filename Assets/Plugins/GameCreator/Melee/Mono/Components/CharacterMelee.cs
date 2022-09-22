@@ -35,8 +35,7 @@
         private const float TRANSITION = 0.15f;
 
         //Buffer window adjustment for animation cancelling
-        protected const float INPUT_BUFFER_TIME = 0.08f;
-        protected const float COMBO_BUFFER_TIME = 2.0f;
+        protected const float INPUT_BUFFER_TIME = 0.35f;
 
         private const CharacterAnimation.Layer LAYER_DEFEND = CharacterAnimation.Layer.Layer3;
 
@@ -63,7 +62,6 @@
 
         public bool IsDrawing { get; protected set; }
         public bool IsSheathing { get; protected set; }
-        public bool IsDodging { get; set; }
 
         public bool IsAttacking { get; private set; }
         public bool IsBlocking { get; private set; }
@@ -132,7 +130,6 @@
 
                 if (canAttack && this.inputBuffer.HasInput())
                 {
-                    var isDodging = this.IsDodging;
                     ActionKey key = this.inputBuffer.GetInput();
                     MeleeClip meleeClip = this.comboSystem.Select(key);
 

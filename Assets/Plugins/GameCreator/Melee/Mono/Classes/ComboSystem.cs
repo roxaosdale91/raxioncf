@@ -20,7 +20,8 @@
             InputForward,
             InputBackwards,
             InputLeft,
-            InputRight
+            InputRight,
+            Dodging
         }
 
         private static readonly Vector3 PLANE = new Vector3(1, 0, 1);
@@ -269,6 +270,13 @@
 
                     case Condition.AfterPerfectBlock:
                         if (this.isPerfectBlock && Time.time < this.perfectBlockTime + BLOCK_WINDOW)
+                        {
+                            return candidates[i];
+                        }
+                        break;
+                    case Condition.Dodging:
+                        bool isDodging = this.melee.Character.isDodging();
+                        if (isDodging)
                         {
                             return candidates[i];
                         }

@@ -101,7 +101,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   segmentResolution: 0.2
-  pointA: {x: 0, y: 1, z: 0}
+  pointA: {x: 0.06, y: 0.8, z: 0}
   pointB: {x: 0, y: -0.5, z: 0}
   radius: 0.5
   offset: {x: 0, y: 0, z: 0}
