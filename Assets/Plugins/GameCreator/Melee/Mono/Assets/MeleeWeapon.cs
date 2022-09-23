@@ -123,11 +123,11 @@
                 switch (frontalAttack)
                 {
                     case true:
-                        meleeClip = this.knockbackReaction[1];
+                        meleeClip = this.knockbackReaction[2];
                         break;
 
                     case false:
-                        meleeClip = this.knockbackReaction[2];
+                        meleeClip = this.knockbackReaction[3];
                         break;
                 }
 
@@ -139,9 +139,19 @@
                 index = UnityEngine.Random.Range(0, this.knockbackReaction.Count - 1);
                 if (this.knockbackReaction.Count != 1 && index == this.prevRandomHit) index++;
                 this.prevRandomHit = index;
-                
 
-                return this.knockbackReaction[0];
+                 switch (frontalAttack)
+                {
+                    case true:
+                        meleeClip = this.knockbackReaction[0];
+                        break;
+
+                    case false:
+                        meleeClip = this.knockbackReaction[1];
+                        break;
+                }
+
+                return meleeClip;
             }
 
             if (isKnockedUp) {
