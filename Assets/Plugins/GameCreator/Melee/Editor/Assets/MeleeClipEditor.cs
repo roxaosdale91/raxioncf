@@ -4,6 +4,7 @@
 	using UnityEditor;
     using GameCreator.Core;
     using GameCreator.Characters;
+    using GameCreator.Variables;
     using System;
     using System.IO;
 
@@ -44,11 +45,13 @@
         private Section sectionMotion;
         private Section sectionEffects;
         private Section sectionCombat;
+        private Section sectionKnockup;
 
         private SerializedProperty spAnimationClip;
         private SerializedProperty spAvatarMask;
         private SerializedProperty spTransitionIn;
         private SerializedProperty spTransitionOut;
+        private SerializedProperty spAnimationSpeed;
 
         private SerializedProperty spMovementForward;
         private SerializedProperty spMovementSides;
@@ -65,6 +68,7 @@
         private SerializedProperty spIsAttack;
         private SerializedProperty spIsBlockable;
 
+
         private SerializedProperty spPoiseDamage;
         private SerializedProperty spDefenseDamage;
 
@@ -73,6 +77,48 @@
         private SerializedProperty spPosture;
 
         private SerializedProperty spAttackPhase;
+
+        // Knockup Handler
+
+        private SerializedProperty spCharacter;
+        private SerializedProperty spAction;
+        private SerializedProperty spLayer;
+
+        private SerializedProperty spState;
+        private SerializedProperty spStateAsset;
+        private SerializedProperty spStateClip;
+
+        private SerializedProperty spWeight;
+        private SerializedProperty spTransitionTime;
+        private SerializedProperty spSpeed;
+
+
+        // State Handler
+
+        public enum StateInput
+        {
+            StateAsset
+        }
+
+        public enum StateAction
+        {
+            Change,
+            Reset
+        }
+
+
+        public CharacterState stateAsset;
+        [Range(0f, 1f)] public float weight = 1.0f;
+        public float transitionTime = 0.25f;
+        public NumberProperty speed = new NumberProperty(1.0f);
+        public StateAction action = StateAction.Change;
+        public StateInput state = StateInput.StateAsset;
+
+
+
+
+        private SerializedProperty spIsKnockUp;
+        private SerializedProperty spIsIgnorePrevious;
 
         private int drawDragType;
 
@@ -98,11 +144,13 @@
             this.sectionMotion = new Section("Motion", this.LoadIcon("Animation"), this.Repaint);
             this.sectionEffects = new Section("Effects", this.LoadIcon("Effects"), this.Repaint);
             this.sectionCombat = new Section("Combat", this.LoadIcon("Animation"), this.Repaint);
+            this.sectionKnockup = new Section("State Asset", this.LoadIcon("Animation"), this.Repaint);
 
             this.spAnimationClip = this.serializedObject.FindProperty("animationClip");
             this.spAvatarMask = this.serializedObject.FindProperty("avatarMask");
             this.spTransitionIn = this.serializedObject.FindProperty("transitionIn");
             this.spTransitionOut = this.serializedObject.FindProperty("transitionOut");
+            this.spAnimationSpeed = this.serializedObject.FindProperty("animSpeed");
 
             this.spMovementForward = this.serializedObject.FindProperty("movementForward");
             this.spMovementSides = this.serializedObject.FindProperty("movementSides");
@@ -127,6 +175,23 @@
             this.spPosture = this.serializedObject.FindProperty("posture");
 
             this.spAttackPhase = serializedObject.FindProperty("attackPhase");
+
+            this.spIsKnockUp = this.serializedObject.FindProperty("isKnockup");
+            this.spIsIgnorePrevious = this.serializedObject.FindProperty("isIgnorePrevious");
+
+
+            // Knock up Handler
+            // this.spCharacter = this.serializedObject.FindProperty("character");
+            // this.spAction = this.serializedObject.FindProperty("action");
+            // this.spLayer = this.serializedObject.FindProperty("layer");
+
+            // this.spState = this.serializedObject.FindProperty("state");
+            this.spStateAsset = this.serializedObject.FindProperty("stateEndAsset");
+            // this.spStateClip = this.serializedObject.FindProperty("stateClip");
+
+            // this.spWeight = this.serializedObject.FindProperty("weight");
+            // this.spTransitionTime = this.serializedObject.FindProperty("transitionTime");
+            // this.spSpeed = this.serializedObject.FindProperty("speed");
 
             if (!TEX_PREVIEW_ACCEPT) TEX_PREVIEW_ACCEPT = MakeTexture(Color.green, 0.25f);
             if (!TEX_PREVIEW_REJECT) TEX_PREVIEW_REJECT = MakeTexture(Color.red, 0.25f);
@@ -222,6 +287,9 @@
             GUILayout.Space(SPACING);
             this.PaintSectionCombat();
 
+            GUILayout.Space(SPACING);
+            this.PaintSectionKnockup();
+
             this.serializedObject.ApplyModifiedProperties();
             this.serializedObject.Update();
 
@@ -246,6 +314,7 @@
         {
             return AnimationMode.InAnimationMode();
         }
+        
 
         private void PaintSectionAnimation()
         {
@@ -262,8 +331,50 @@
                     EditorGUILayout.Space();
                     EditorGUILayout.PropertyField(this.spTransitionIn);
                     EditorGUILayout.PropertyField(this.spTransitionOut);
+                    EditorGUILayout.PropertyField(this.spAnimationSpeed);
 
                     EditorGUILayout.EndVertical();
+                }
+            }
+        }
+
+        
+
+        private static readonly GUIContent GC_MASK = new GUIContent("Mask (optional)");
+
+        private void PaintSectionKnockup()
+        {
+            this.sectionKnockup.PaintSection();
+            using (var group = new EditorGUILayout.FadeGroupScope(this.sectionKnockup.state.faded))
+            {
+                if (group.visible)
+                {
+                    
+                    EditorGUILayout.PropertyField(this.spStateAsset);
+
+                    // if (this.spAction.intValue == (int)StateAction.Change)
+                    // {
+                    //     EditorGUI.indentLevel++;
+                    //     EditorGUILayout.PropertyField(this.spState);
+                    //     switch (this.spState.intValue)
+                    //     {
+                    //         case (int)StateInput.StateAsset:
+                    //             EditorGUILayout.PropertyField(this.spStateAsset);
+                    //             break;
+                    //     }
+
+                    //     EditorGUILayout.Space();
+                    //     EditorGUILayout.PropertyField(this.spAvatarMask, GC_MASK);
+                    //     EditorGUILayout.PropertyField(this.spWeight);
+                    //     EditorGUI.indentLevel--;
+                    // }
+
+                    // EditorGUILayout.Space();
+                    // EditorGUILayout.PropertyField(this.spLayer);
+                    // EditorGUILayout.PropertyField(this.spTransitionTime);
+                    // EditorGUILayout.PropertyField(this.spSpeed);
+
+                    this.serializedObject.ApplyModifiedProperties();
                 }
             }
         }
@@ -348,6 +459,9 @@
                     EditorGUILayout.PropertyField(this.spIsAttack);
                     EditorGUI.BeginDisabledGroup(!this.spIsAttack.boolValue);
                     EditorGUI.indentLevel++;
+                    
+                    EditorGUILayout.PropertyField(this.spIsKnockUp);
+                    EditorGUILayout.PropertyField(this.spIsIgnorePrevious);
 
                     EditorGUILayout.PropertyField(this.spIsBlockable);
                     EditorGUILayout.PropertyField(this.spDefenseDamage);

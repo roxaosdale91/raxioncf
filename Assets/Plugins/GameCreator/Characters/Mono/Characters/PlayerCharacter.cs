@@ -302,7 +302,7 @@
             #endif
         }
 
-        protected void ComputeMovement(Vector3 target)
+        public void ComputeMovement(Vector3 target)
         {
             switch (this.useAcceleration)
             {

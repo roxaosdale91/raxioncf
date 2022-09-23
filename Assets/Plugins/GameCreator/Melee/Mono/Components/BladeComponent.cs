@@ -79,6 +79,8 @@
         
         private BoxData[] boxInterframeCaptures = new BoxData[20];
 
+        public bool ignorePrevious {get; set;}
+
         // trail
         private WeaponTrail weaponTrail;
         public bool enableWeaponTrail = true;
@@ -163,7 +165,7 @@
 
         // PUBLIC METHODS: ------------------------------------------------------------------------
 
-        public GameObject[] CaptureHits()
+        public GameObject[] CaptureHits(bool isIgnorePrevious = false)
         {
             #if UNITY_EDITOR
             this.capturingHitsTime = Time.time;
@@ -175,7 +177,7 @@
             {
                 case CaptureHitModes.Segment: candidates = CaptureHitsSegment(); break;
                 case CaptureHitModes.Sphere: candidates = CaptureHitsSphere(); break;
-                case CaptureHitModes.Box: candidates = CaptureHitsBox(); break;
+                case CaptureHitModes.Box: candidates = CaptureHitsBox(isIgnorePrevious); break;
             }
 
             this.prevCaptureFrame = Time.frameCount;
@@ -248,7 +250,7 @@
             return collisions;
         }
 
-        private GameObject[] CaptureHitsBox()
+        private GameObject[] CaptureHitsBox(bool isIgnorePrevious = false)
         {
             int predictions = 1;
             BoxData currentBoxData = new BoxData(
@@ -303,9 +305,13 @@
                 {
 
                     GameObject target = this.bufferColliders[j].gameObject;
+                    Debug.Log("isIgnorePrevious : " + isIgnorePrevious);
 
-                    if (!candidates.Contains(target)) {
-                        Debug.Log("Hit : " + target);
+                    if (isIgnorePrevious == false) {
+                        Debug.Log("IGNORE: SINGLE TARGET");
+                        candidates.Add(target);
+                    } else if (isIgnorePrevious == true) {
+                        Debug.Log("IGNORE: MULTIPLE TARGET");
                         candidates.Add(target);
                     }
                 }

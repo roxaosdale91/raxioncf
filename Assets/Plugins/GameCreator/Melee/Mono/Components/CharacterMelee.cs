@@ -2,13 +2,14 @@
 {
     using System;
     using System.Collections;
-	using System.Collections.Generic;
+    using System.Collections.Generic;
     using GameCreator.Core;
     using GameCreator.Characters;
     using UnityEngine;
     using UnityEngine.Audio;
     using GameCreator.Variables;
     using GameCreator.Pool;
+    using System.Threading.Tasks;
 
     [RequireComponent(typeof(Character))]
     [AddComponentMenu("Game Creator/Melee/Character Melee")]
@@ -32,6 +33,8 @@
         private const float MAX_RAND_PITCH = 1.2f;
 
         private const float TRANSITION = 0.15f;
+
+        //Buffer window adjustment for animation cancelling
         protected const float INPUT_BUFFER_TIME = 0.35f;
 
         private const CharacterAnimation.Layer LAYER_DEFEND = CharacterAnimation.Layer.Layer3;
@@ -61,8 +64,10 @@
         public bool IsSheathing { get; protected set; }
 
         public bool IsAttacking { get; private set; }
-        public bool IsBlocking  { get; private set; }
+        public bool IsBlocking { get; private set; }
         public bool HasFocusTarget { get; private set; }
+
+        public bool IsKnockup { get; protected set; }
 
         public bool IsStaggered => this.isStaggered && GetTime() <= this.staggerEndtime;
         public bool IsInvincible => this.isInvincible && GetTime() <= this.invincibilityEndTime;
@@ -81,7 +86,7 @@
         protected GameObject modelWeapon;
         protected GameObject modelShield;
 
-        protected MeleeClip currentMeleeClip;
+        public MeleeClip currentMeleeClip;
         protected HashSet<int> targetsEvaluated;
 
         private float startBlockingTime = -100f;
@@ -100,6 +105,7 @@
         public Character Character { get; protected set; }
         public CharacterAnimator CharacterAnimator { get; protected set; }
         public BladeComponent Blade { get; protected set; }
+        public Boolean isIgnorePrevious { get; set; }
 
         // INITIALIZERS: --------------------------------------------------------------------------
 
@@ -120,8 +126,9 @@
             if (this.comboSystem != null)
             {
                 this.comboSystem.Update();
+                var canAttack = this.CanAttack();
 
-                if (this.CanAttack() && this.inputBuffer.HasInput())
+                if (canAttack && this.inputBuffer.HasInput())
                 {
                     ActionKey key = this.inputBuffer.GetInput();
                     MeleeClip meleeClip = this.comboSystem.Select(key);
@@ -151,13 +158,13 @@
 
                 if (this.Blade != null && phase == 1)
                 {
-                    GameObject[] hits = this.Blade.CaptureHits();
+                    GameObject[] hits = this.Blade.CaptureHits(this.isIgnorePrevious);
                     for (int i = 0; i < hits.Length; ++i)
                     {
                         int hitInstanceID = hits[i].GetInstanceID();
 
-                        if (this.targetsEvaluated.Contains(hitInstanceID)) continue;
-                        if (hits[i].transform.IsChildOf(this.transform)) continue;
+                        if (this.targetsEvaluated.Contains(hitInstanceID) && this.isIgnorePrevious == false) continue;
+                        if (hits[i].transform.IsChildOf(this.transform) && this.isIgnorePrevious == false) continue;
 
                         HitResult hitResult = HitResult.ReceiveDamage;
 
@@ -181,7 +188,7 @@
                                 triggers[j].OnReceiveAttack(this, attack, hitResult);
                             }
                         }
-                        
+
                         if (hitSomething && attack != null && targetMelee != null)
                         {
                             Vector3 position = this.Blade.GetImpactPosition();
@@ -282,11 +289,18 @@
             if (this.IsAttacking) yield break;
             if (!this.CanAttack()) yield break;
 
+            CharacterAnimator _animator = this.Character.GetCharacterAnimator();
+
             yield return this.Sheathe();
 
             if (weapon != null)
             {
                 this.currentWeapon = weapon;
+
+
+                this.previousWeapon = this.currentWeapon;
+                this.previousShield = shield != null ? shield : weapon.defaultShield;
+
                 this.EquipShield(shield != null ? shield : weapon.defaultShield);
 
                 this.comboSystem = new ComboSystem(this, weapon.combos);
@@ -299,7 +313,8 @@
                     float time = this.ChangeState(
                         this.currentWeapon.characterState,
                         this.currentWeapon.characterMask,
-                        MeleeWeapon.LAYER_STANCE
+                        MeleeWeapon.LAYER_STANCE,
+                        _animator
                     );
 
                     if (state.enterClip != null) wait = new WaitForSeconds(time);
@@ -386,8 +401,17 @@
 
         public void StopAttack()
         {
-            this.comboSystem.Stop();
-            if(this != null && this.currentMeleeClip != null) this.currentMeleeClip.Stop(this);
+            // Make sure to only stop attack sequence
+            if (this != null && this.currentMeleeClip != null && this.currentMeleeClip.isAttack == true)
+            {
+                if (this.inputBuffer.HasInput())
+                {
+                    this.inputBuffer.ConsumeInput();
+                }
+                this.comboSystem.Stop();
+                this.currentMeleeClip.Stop(this);
+                this.Blade.EventAttackEnd.Invoke();
+            }
         }
 
         public int GetCurrentPhase()
@@ -502,8 +526,17 @@
 
         public HitResult OnReceiveAttack(CharacterMelee attacker, MeleeClip attack)
         {
+
+            CharacterMelee melee = this.Character.GetComponent<CharacterMelee>();
+
             if (this.currentWeapon == null) return HitResult.ReceiveDamage;
             if (this.IsInvincible) return HitResult.Ignore;
+            if (this.Character.IsKnockedDown()) return HitResult.Ignore;
+            // if(this.Character.isKnockedUp() && getComboBufferDidCombo == false) {
+            //     this.Character.UpdateLocomotionState(Character.CharacterStatus.IsKnockedDown);
+            //     melee.SetInvincibility(5.0f);
+            //     return HitResult.Ignore;
+            // }
 
             if (this.Blade == null)
             {
@@ -511,6 +544,9 @@
                 return HitResult.Ignore;
             }
 
+            Vector3 bladeDelta = this.Blade.transform.position - (this.transform.position + this.Character.characterLocomotion.characterController.center);
+
+            #region Attack and Defense handlers
             float attackAngle = Vector3.Angle(
                 attacker.transform.TransformDirection(Vector3.forward),
                 this.transform.TransformDirection(Vector3.forward)
@@ -522,7 +558,7 @@
 
             if (this.currentShield != null &&
                 attack.isBlockable && this.IsBlocking &&
-                180f - attackAngle < defenseAngle/2f)
+                180f - attackAngle < defenseAngle / 2f)
             {
                 this.AddDefense(-attack.defenseDamage);
                 if (this.Defense > 0)
@@ -573,34 +609,94 @@
                     if (this.EventBreakDefense != null) this.EventBreakDefense.Invoke();
                 }
             }
+            #endregion
 
             this.AddPoise(-attack.poiseDamage);
             bool isFrontalAttack = attackAngle >= 90f;
-            bool isKnockback = this.Poise <= float.Epsilon;
+
+            bool isKnockBack = this.Poise <= float.Epsilon;
+            bool isKnockUp = attack.isKnockup;
+
+            // var characterLocomotion = this.Character.characterLocomotion;
+
+            bool isInitialKnockUp = false;
+
+            #region Juggle Handler
+            bool isKnockedDown = this.Character.IsKnockedDown();
+            bool isKnockedUp = this.Character.isKnockedUp();
+
+            if (isKnockBack)
+            {
+                this.Character.UpdateLocomotionState(Character.CharacterStatus.IsKnockedDown);
+                melee.SetInvincibility(5.0f);
+            }
+            else if (isKnockUp)
+            {
+                this.Character.UpdateLocomotionState(Character.CharacterStatus.isKnockedUp);
+            }
+
+            isKnockedUp = this.Character.isKnockedUp();
+
+            if (isKnockedUp && !isKnockUp)
+            {
+                this.Character.UpdateLocomotionState(Character.CharacterStatus.isKnockedUp);
+
+                bool getComboBufferDidCombo = this.Character.GetComboBufferWindow();
+                if(getComboBufferDidCombo == false) {
+                    this.Character.UpdateLocomotionState(Character.CharacterStatus.IsKnockedDown);
+                }
+            }
+
+            #endregion
 
             MeleeClip hitReaction = this.currentWeapon.GetHitReaction(
                 this.Character.IsGrounded(),
                 isFrontalAttack,
-                isKnockback
+                isKnockBack,
+                isKnockedUp,
+                attack.isKnockup
             );
+
+            // End of Knockup/Knockdown State Assignment
+            if (hitReaction.stateEndAsset != null)
+            {
+                CharacterAnimation.Layer layer = CharacterAnimation.Layer.Layer1;
+                this.Character.GetCharacterAnimator().SetState(
+                    hitReaction.stateEndAsset,
+                    null,
+                    1.0f,
+                    0.25f,
+                    1.0f,
+                    layer
+                );
+            }
 
             this.ExecuteEffects(
                 attacker.Blade.GetImpactPosition(),
-                isKnockback
+                isKnockBack
                     ? attacker.currentWeapon.audioImpactKnockback
                     : attacker.currentWeapon.audioImpactNormal,
-                isKnockback
+                isKnockBack
                     ? attacker.currentWeapon.prefabImpactKnockback
                     : attacker.currentWeapon.prefabImpactNormal
             );
 
             attack.ExecuteHitPause();
+
             if (!this.IsUninterruptable)
             {
                 hitReaction.Play(this);
             }
 
             return HitResult.ReceiveDamage;
+        }
+
+        private async Task<bool> RemoveKnockUpState(CharacterMelee meleeCharacter)
+        {
+            var characterLocomotion = meleeCharacter.Character.characterLocomotion;
+            characterLocomotion.isKnockedUp = false;
+
+            return true;
         }
 
         // PRIVATE METHODS: -----------------------------------------------------------------------
@@ -645,7 +741,7 @@
             return time;
         }
 
-        protected float ChangeState(CharacterState state, AvatarMask mask, CharacterAnimation.Layer layer)
+        protected float ChangeState(CharacterState state, AvatarMask mask, CharacterAnimation.Layer layer, CharacterAnimator _animator)
         {
             float time = TRANSITION;
             if (state != null)
@@ -657,6 +753,7 @@
 
                 time = Mathf.Max(TRANSITION, time) * 0.5f;
                 this.CharacterAnimator.SetState(state, mask, 1f, time, 1f, layer);
+                _animator.ResetControllerTopology(state.GetRuntimeAnimatorController());
             }
 
             return time;

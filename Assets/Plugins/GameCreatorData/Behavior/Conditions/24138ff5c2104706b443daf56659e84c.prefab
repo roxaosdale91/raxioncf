@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2390142948030888796}
   - component: {fileID: 3453063659738289592}
   - component: {fileID: -6842826890126903059}
+  - component: {fileID: -3949498415888190019}
   m_Layer: 0
   m_Name: 24138ff5c2104706b443daf56659e84c
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - {fileID: -6842826890126903059}
+  - {fileID: -3949498415888190019}
 --- !u!114 &-6842826890126903059
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -62,10 +64,10 @@ MonoBehaviour:
   isExpanded: 1
   comparison: 0
   variable:
-    variableType: 1
+    variableType: 0
     global:
       allowTypesMask: 8
-      name: 
+      name: atack
     local:
       allowTypesMask: 8
       name: start
@@ -78,12 +80,80 @@ MonoBehaviour:
       index: 0
   compareTo:
     optionIndex: 0
-    value: 0
+    value: 1
     global:
       allowTypesMask: 8
       name: 
     local:
       allowTypesMask: 8
+      name: 
+      targetType: 2
+      targetObject: {fileID: 0}
+    list:
+      targetType: 3
+      targetObject: {fileID: 0}
+      select: 1
+      index: 0
+--- !u!114 &-3949498415888190019
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8438376490537527311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ffd546b3daf4b1e9a330795ea65ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExpanded: 1
+  objectA:
+    target: 2
+    gameObject: {fileID: 0}
+    global:
+      allowTypesMask: 512
+      name: 
+    local:
+      allowTypesMask: 512
+      name: 
+      targetType: 2
+      targetObject: {fileID: 0}
+    list:
+      targetType: 3
+      targetObject: {fileID: 0}
+      select: 1
+      index: 0
+    eventChangeVariable:
+      m_PersistentCalls:
+        m_Calls: []
+  objectB:
+    target: 4
+    gameObject: {fileID: 0}
+    global:
+      allowTypesMask: 512
+      name: 
+    local:
+      allowTypesMask: 512
+      name: target
+      targetType: 1
+      targetObject: {fileID: 0}
+    list:
+      targetType: 3
+      targetObject: {fileID: 0}
+      select: 1
+      index: 0
+    eventChangeVariable:
+      m_PersistentCalls:
+        m_Calls: []
+  compare: 3
+  distance:
+    optionIndex: 0
+    value: 3
+    global:
+      allowTypesMask: 4
+      name: 
+    local:
+      allowTypesMask: 4
       name: 
       targetType: 2
       targetObject: {fileID: 0}

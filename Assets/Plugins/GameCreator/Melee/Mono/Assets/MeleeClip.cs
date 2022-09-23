@@ -2,6 +2,7 @@
 {
     using System.Collections;
     using GameCreator.Core;
+    using GameCreator.Characters;
     using UnityEngine;
 
     [CreateAssetMenu(
@@ -66,8 +67,14 @@
         public bool isBlockable = true;
         public float pushForce = 50f;
 
-        public float poiseDamage = 2f;
-        public float defenseDamage = 1f;
+        public bool isKnockup = false;
+        public bool isIgnorePrevious = false;
+
+        public float poiseDamage = 2.0f;
+        public float defenseDamage = 1.0f;
+
+        public float animSpeed = 1.0f;
+        private static readonly Vector3 PLANE = new Vector3(1, 0, 1);
 
         // properties:
         public Interrupt interruptible = Interrupt.Interruptible;
@@ -87,20 +94,23 @@
 
         public IActionsList actionsOnExecute;
         public IActionsList actionsOnHit;
+        public CharacterState stateEndAsset;
 
         // PUBLIC METHODS: ------------------------------------------------------------------------
-
         public void Play(CharacterMelee melee)
         {
+
             if (this.interruptible == Interrupt.Uninterruptible) melee.SetUninterruptable(this.Length);
             if (this.vulnerability == Vulnerable.Invincible) melee.SetInvincibility(this.Length);
 
             melee.SetPosture(this.posture, this.Length);
             melee.PlayAudio(this.soundEffect);
 
+            melee.isIgnorePrevious = this.isIgnorePrevious;
+
             melee.Character.GetCharacterAnimator().StopGesture(0.1f);
             melee.Character.GetCharacterAnimator().CrossFadeGesture(
-                this.animationClip, 1.0f, this.avatarMask,
+                this.animationClip, this.animSpeed, this.avatarMask,
                 this.transitionIn, this.transitionOut
             );
 
@@ -116,12 +126,16 @@
             );
 
             this.ExecuteActionsOnStart(melee.Blade.GetImpactPosition(), melee.gameObject);
+            
+            // if(!melee.IsAttacking && melee.Character.isKnockedUp()) {
+            //     melee.comboBuffer.ConsumeCombo();
+            // }
+
+            
         }
 
         public void Stop(CharacterMelee melee)
         {
-            float duration = Mathf.Max(0, 0);
-
             melee.Character.RootMovement(
                 0,
                 0,
@@ -158,6 +172,9 @@
                 if (!actions) return;
                 actions.Execute(target, null);
             }
+
+            
+            // melee.Character.characterLocomotion.overrideFaceDirection = CharacterLocomotion.OVERRIDE_FACE_DIRECTION.None;
         }
 
         public void ExecuteActionsOnHit(Vector3 position, GameObject target)
