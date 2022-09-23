@@ -107,7 +107,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   boxInterframePredictions: 19
   boxCenter: {x: 0, y: 0.2, z: 0}
-  boxSize: {x: 0.4, y: 1.11, z: 0.4}
+  boxSize: {x: 0.2, y: 1.11, z: 0.2}
   debugMode: 0
   EventAttackStart:
     m_PersistentCalls:

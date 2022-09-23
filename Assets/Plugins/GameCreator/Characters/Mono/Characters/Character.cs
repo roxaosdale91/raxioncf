@@ -15,8 +15,10 @@
     public class Character : GlobalID, IGameSave
     {
         
-        protected const float DOWN_BUFFER_TIME = 5.0f;
-        protected const float COMBO_BUFFER_TIME = 0.8f;
+        protected const float DOWN_BUFFER_TIME = 5.00f;
+        protected const float JUGGLE_BUFFER_TIME = 5.00f;
+        protected const float COMBO_BUFFER_TIME = 1.00f;
+
         [System.Serializable]
         public class State
         {
@@ -134,7 +136,7 @@
             
             this.downBuffer = new InputBuffer(DOWN_BUFFER_TIME);
             this.comboBuffer = new InputBuffer(COMBO_BUFFER_TIME);
-            this.juggleWindow = new InputBuffer(DOWN_BUFFER_TIME); 
+            this.juggleWindow = new InputBuffer(JUGGLE_BUFFER_TIME); 
 
             if (!Application.isPlaying) return;
             this.animator = GetComponent<CharacterAnimator>();
@@ -176,6 +178,16 @@
         {
             if (!Application.isPlaying) return;
 
+            if (this.characterLocomotion.isKnockedUp && this.juggleWindow.DidCombo() == false && this.comboBuffer.DidCombo() == false) {
+                this.juggleWindow.ConsumeCombo();
+                this.comboBuffer.ConsumeCombo();
+                this.GetCharacterAnimator().ResetState( 0.25f, CharacterAnimation.Layer.Layer1);
+                this.downBuffer.ConsumeDown();
+                this.characterLocomotion.IsKnockedDown = false;
+                this.characterLocomotion.isKnockedUp = false;
+                this.characterLocomotion.isControllable = true;
+            }
+
             if(this.characterLocomotion.IsKnockedDown && this.downBuffer.WasKnockedDown() == false) {
                 // RESET STATE FROM DOWN HERE
                 this.GetCharacterAnimator().ResetState( 0.25f, CharacterAnimation.Layer.Layer1);
@@ -183,16 +195,8 @@
                 this.characterLocomotion.IsKnockedDown = false;
                 this.characterLocomotion.isKnockedUp = false;
                 this.characterLocomotion.isControllable = true;
-            } else if (this.characterLocomotion.isKnockedUp && this.juggleWindow.DidCombo() == false) {
-                this.juggleWindow.ConsumeCombo();
-                this.UpdateLocomotionState(CharacterStatus.IsKnockedDown);
-                // this.GetCharacterAnimator().ResetState( 0.25f, CharacterAnimation.Layer.Layer1);
-                // this.comboBuffer.ConsumeCombo();
-                // this.juggleWindow.ConsumeCombo();
-                // this.characterLocomotion.IsKnockedDown = false;
-                // this.characterLocomotion.isKnockedUp = false;
-                // this.characterLocomotion.isControllable = true;
             }
+
             if (this.ragdoll != null && this.ragdoll.GetState() != CharacterRagdoll.State.Normal)
             {
                 this.ragdoll.Update();
@@ -273,6 +277,9 @@
                 case CharacterStatus.isKnockedUp:
                     this.characterLocomotion.isKnockedUp = true;
                     this.characterLocomotion.IsKnockedDown = false;
+                    
+                    this.comboBuffer.ConsumeCombo();
+                    this.juggleWindow.ConsumeCombo();
                     this.comboBuffer.ComboTriggered();
                     this.juggleWindow.ComboTriggered();
                     break;

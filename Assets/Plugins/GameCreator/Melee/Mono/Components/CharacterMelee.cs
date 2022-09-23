@@ -528,15 +528,16 @@
         {
 
             CharacterMelee melee = this.Character.GetComponent<CharacterMelee>();
+            bool getComboBufferDidCombo = this.Character.GetComboBufferWindow();
 
             if (this.currentWeapon == null) return HitResult.ReceiveDamage;
             if (this.IsInvincible) return HitResult.Ignore;
             if (this.Character.IsKnockedDown()) return HitResult.Ignore;
-            // if(this.Character.isKnockedUp() && getComboBufferDidCombo == false) {
-            //     this.Character.UpdateLocomotionState(Character.CharacterStatus.IsKnockedDown);
-            //     melee.SetInvincibility(5.0f);
-            //     return HitResult.Ignore;
-            // }
+            if(this.Character.isKnockedUp() && getComboBufferDidCombo == false) {
+                this.Character.UpdateLocomotionState(Character.CharacterStatus.IsKnockedDown);
+                melee.SetInvincibility(5.0f);
+                return HitResult.Ignore;
+            }
 
             if (this.Blade == null)
             {
@@ -641,10 +642,10 @@
             {
                 this.Character.UpdateLocomotionState(Character.CharacterStatus.isKnockedUp);
 
-                bool getComboBufferDidCombo = this.Character.GetComboBufferWindow();
-                if(getComboBufferDidCombo == false) {
-                    this.Character.UpdateLocomotionState(Character.CharacterStatus.IsKnockedDown);
-                }
+                // bool getComboBufferDidCombo = this.Character.GetComboBufferWindow();
+                // if(getComboBufferDidCombo == false) {
+                //     this.Character.UpdateLocomotionState(Character.CharacterStatus.IsKnockedDown);
+                // }
             }
 
             #endregion
