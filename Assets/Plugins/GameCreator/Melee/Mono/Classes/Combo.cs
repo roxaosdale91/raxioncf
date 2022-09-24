@@ -13,6 +13,7 @@
 
         public MeleeClip meleeClip;
         public bool isEnabled = true;
+        public bool shouldRepeat = false;
 
         // CONSTRUCTOR: ---------------------------------------------------------------------------
 
@@ -22,6 +23,7 @@
             this.condition = ComboSystem.Condition.None;
             this.meleeClip = null;
             this.isEnabled = true;
+            this.shouldRepeat = false;
         }
 
         // PUBLIC METHODS: ------------------------------------------------------------------------

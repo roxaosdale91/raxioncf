@@ -272,7 +272,7 @@ namespace NJG.PUN.Melee
             yield return wait;
 
             if (EventSheatheWeapon != null) EventSheatheWeapon.Invoke(currentWeapon);
-            if (modelWeapon != null) Destroy(modelWeapon);
+            if (this.modelWeapons != null) foreach (var model in modelWeapons) Destroy(model);
             if (modelShield != null) Destroy(modelShield);
 
             OnSheatheWeapon();
@@ -334,9 +334,18 @@ namespace NJG.PUN.Melee
 
                 if (EventDrawWeapon != null) EventDrawWeapon.Invoke(currentWeapon);
 
-                modelWeapon = currentWeapon.EquipWeapon(CharacterAnimator);
-                Blade = modelWeapon.GetComponentInChildren<BladeComponent>();
-                if (Blade != null) Blade.Setup(this);
+                modelWeapons = currentWeapon.EquipWeapon(CharacterAnimator);
+                this.Blades = new List<BladeComponent>();
+
+                if(this.Blades != null && modelWeapons != null)
+                {
+                    foreach (var model in modelWeapons)
+                    {
+                        var blade = model.GetComponent<BladeComponent>();
+                        Blades.Add(blade);
+                        if (blade != null) blade.Setup(this);
+                    }
+                }
 
                 OnDrawWeapon();
 
