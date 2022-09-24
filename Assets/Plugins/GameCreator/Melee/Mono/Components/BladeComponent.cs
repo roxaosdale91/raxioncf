@@ -9,6 +9,18 @@
 
     public class BladeComponent : MonoBehaviour
 	{
+        public enum WeaponBone
+        {
+            Root = -1,
+            RightHand = HumanBodyBones.RightHand,
+            LeftHand = HumanBodyBones.LeftHand,
+            RightArm = HumanBodyBones.RightLowerArm,
+            LeftArm = HumanBodyBones.LeftLowerArm,
+            RightFoot = HumanBodyBones.RightFoot,
+            LeftFoot = HumanBodyBones.LeftFoot,
+            Camera = 100,
+        }
+
         public enum CaptureHitModes
         {
             Segment,
@@ -40,6 +52,8 @@
         private static readonly GameObject[] EMPTY_GO_LIST = new GameObject[0];
 
         // PROPERTIES: ----------------------------------------------------------------------------
+
+        public WeaponBone bone = WeaponBone.RightHand;
 
         public CharacterMelee Melee { get; private set; }
 
@@ -83,7 +97,7 @@
 
         // trail
         private WeaponTrail weaponTrail;
-        public bool enableWeaponTrail = true;
+        public bool enableWeaponTrail = false;
         public Material trailMaterial;
         public int trailGranularity = 60;
         public float trailDuration = 0.5f;
@@ -292,8 +306,8 @@
                 if (!this.boxInterframeCaptures[i].active) continue;
                 
                 int numCollisions = Physics.OverlapBoxNonAlloc(
-                    gameObject.transform.position,
-                    this.boxSize / 2f,
+                    transform.TransformPoint(this.offset),
+                    this.boxSize,
                     this.bufferColliders,
                     this.boxInterframeCaptures[i].rotation,
                     this.layerMask,

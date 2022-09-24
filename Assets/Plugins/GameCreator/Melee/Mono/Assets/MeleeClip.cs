@@ -1,6 +1,7 @@
 ﻿namespace GameCreator.Melee
 {
     using System.Collections;
+    using System.Collections.Generic;
     using GameCreator.Core;
     using GameCreator.Characters;
     using UnityEngine;
@@ -29,6 +30,8 @@
             Stagger,
         }
 
+        public List<BladeComponent.WeaponBone> affectedBones = new List<BladeComponent.WeaponBone>();
+
         // STATIC & CONSTS: -----------------------------------------------------------------------
 
         private const int HITPAUSE_TIME_LAYER = 80;
@@ -42,8 +45,8 @@
 
         public AnimationClip animationClip;
         public AvatarMask avatarMask;
-        public float transitionIn = 0.25f;
-        public float transitionOut = 0.25f;
+        public float transitionIn = 0.10f;
+        public float transitionOut = 0.40f;
 
         // movement:
         public AnimationCurve movementForward = new AnimationCurve(DEFAULT_KEY_MOVEMENT);
@@ -57,7 +60,7 @@
         public AudioClip soundEffect;
 
         // hit pause:
-        public bool hitPause = true;
+        public bool hitPause = false;
         [Range(0f, 1f)]
         public float hitPauseAmount = 0.05f;
         public float hitPauseDuration = 0.05f;
@@ -65,7 +68,7 @@
         // attack:
         public bool isAttack = true;
         public bool isBlockable = true;
-        public float pushForce = 50f;
+        public float pushForce = 0f;
 
         public bool isKnockup = false;
         public bool isIgnorePrevious = false;
@@ -125,13 +128,8 @@
                 this.movementVertical
             );
 
-            this.ExecuteActionsOnStart(melee.Blade.GetImpactPosition(), melee.gameObject);
-            
-            // if(!melee.IsAttacking && melee.Character.isKnockedUp()) {
-            //     melee.comboBuffer.ConsumeCombo();
-            // }
+            this.ExecuteActionsOnStart(melee.transform.position, melee.gameObject);
 
-            
         }
 
         public void Stop(CharacterMelee melee)
@@ -172,9 +170,6 @@
                 if (!actions) return;
                 actions.Execute(target, null);
             }
-
-            
-            // melee.Character.characterLocomotion.overrideFaceDirection = CharacterLocomotion.OVERRIDE_FACE_DIRECTION.None;
         }
 
         public void ExecuteActionsOnHit(Vector3 position, GameObject target)
