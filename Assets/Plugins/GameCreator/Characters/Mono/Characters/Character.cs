@@ -17,7 +17,7 @@
         
         protected const float DOWN_BUFFER_TIME = 5.00f;
         protected const float JUGGLE_BUFFER_TIME = 5.00f;
-        protected const float COMBO_BUFFER_TIME = 1.00f;
+        protected const float COMBO_BUFFER_TIME = 1.20f;
 
         [System.Serializable]
         public class State

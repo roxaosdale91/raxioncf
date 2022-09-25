@@ -1104,7 +1104,6 @@ GameObject:
   - component: {fileID: 3627716088606962991}
   - component: {fileID: 3627716088606962984}
   - component: {fileID: 3627716088606962986}
-  - component: {fileID: 2979166888744363496}
   - component: {fileID: 8104002329485902349}
   - component: {fileID: -5939681151732956757}
   m_Layer: 8
@@ -1277,6 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5fa3ce8148f4c68a1375bd243117a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sheathedHitReactions: {fileID: 0}
   currentWeapon: {fileID: 0}
   currentShield: {fileID: 0}
   previousWeapon: {fileID: 0}
@@ -1424,26 +1424,6 @@ MonoBehaviour:
       targetObject: {fileID: 0}
       select: 1
       index: 0
---- !u!114 &2979166888744363496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3627716088606962976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fc12b44da9dc4e0899aaeb269539d78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gid: 4930241e-0c53-4493-8897-b69c172aa13b
-  references:
-  - {fileID: 8104002329485902349}
-  - {fileID: -5939681151732956757}
-  behaviorGraph: {fileID: 11400000, guid: c737cb200aa520e44bc8048b425547d3, type: 2}
-  update: 0
-  frequency: 1
-  onComplete: 0
 --- !u!114 &8104002329485902349
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -74,6 +74,8 @@
         public List<MeleeClip> airborneHitReactionsBackLower = new List<MeleeClip>();
 
         public List<MeleeClip> knockbackReaction = new List<MeleeClip>();
+        public List<MeleeClip> knockupReaction = new List<MeleeClip>();
+        public List<MeleeClip> stunReaction = new List<MeleeClip>();
 
         // combo system:
         public List<Combo> combos = new List<Combo>();
@@ -127,7 +129,8 @@
             return instances;
         }
 
-        public MeleeClip GetHitReaction(bool isGrounded, HitLocation location, bool isKnockback, bool isKnockedUp, bool isAttackKnockup)
+        public MeleeClip GetHitReaction(bool isGrounded, HitLocation location, bool isKnockback, bool isKnockedUp, bool isAttackKnockup, 
+                MeleeClip.KnockUpType knockuptype)
         {
             int index;
             MeleeClip meleeClip = null;
@@ -135,22 +138,26 @@
 
             if(isAttackKnockup)  // Use index 1 always for knockup
             {
-                index = UnityEngine.Random.Range(0, this.knockbackReaction.Count - 1);
-                if (this.knockbackReaction.Count != 1 && index == this.prevRandomHit) index++;
+                index = UnityEngine.Random.Range(0, this.knockupReaction.Count - 1);
+                if (this.knockupReaction.Count != 1 && index == this.prevRandomHit) index++;
                 this.prevRandomHit = index;
 
-                switch (location)
-                {
-                    case HitLocation.FrontUpper:
-                    case HitLocation.FrontMiddle:
-                    case HitLocation.FrontLower:
-                        meleeClip = this.knockbackReaction[2];
-                        break;
+                bool isFront = this.GetHitLocation(location);
 
-                    case HitLocation.BackLower:
-                    case HitLocation.BackMiddle:
-                    case HitLocation.BackUpper:
-                        meleeClip = this.knockbackReaction[3];
+                switch(knockuptype) {
+                    case MeleeClip.KnockUpType.Regular:
+                        if(isFront) {
+                            meleeClip = this.knockupReaction[0];           
+                        } else {
+                            meleeClip = this.knockupReaction[1];
+                        }
+                        break;
+                    case MeleeClip.KnockUpType.Smash:
+                        if(isFront) {
+                                meleeClip = this.knockupReaction[2];           
+                            } else {
+                                meleeClip = this.knockupReaction[3];
+                            }
                         break;
                 }
 
@@ -255,6 +262,27 @@
             meleeClip = hitReactionList[index];
 
             return meleeClip;
+        }
+
+        public Boolean GetHitLocation(HitLocation location) {
+            bool isFront = false;
+
+            switch (location) {
+                case HitLocation.FrontUpper:
+                case HitLocation.FrontMiddle:
+                case HitLocation.FrontLower:
+                    isFront = true;
+                    break;
+
+                
+                case HitLocation.BackUpper:
+                case HitLocation.BackMiddle:
+                case HitLocation.BackLower:
+                    isFront = false;
+                    break;
+            }
+
+            return isFront;
         }
     }
 }

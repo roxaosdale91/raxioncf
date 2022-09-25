@@ -119,6 +119,7 @@
 
 
         private SerializedProperty spIsKnockUp;
+        private SerializedProperty spKnockUpType;
         private SerializedProperty spIsIgnorePrevious;
 
         private int drawDragType;
@@ -179,6 +180,7 @@
             this.spAttackPhase = serializedObject.FindProperty("attackPhase");
 
             this.spIsKnockUp = this.serializedObject.FindProperty("isKnockup");
+            this.spKnockUpType = this.serializedObject.FindProperty("knockuptype");
             this.spIsIgnorePrevious = this.serializedObject.FindProperty("isIgnorePrevious");
 
 
@@ -355,28 +357,7 @@
                 {
                     
                     EditorGUILayout.PropertyField(this.spStateAsset);
-
-                    // if (this.spAction.intValue == (int)StateAction.Change)
-                    // {
-                    //     EditorGUI.indentLevel++;
-                    //     EditorGUILayout.PropertyField(this.spState);
-                    //     switch (this.spState.intValue)
-                    //     {
-                    //         case (int)StateInput.StateAsset:
-                    //             EditorGUILayout.PropertyField(this.spStateAsset);
-                    //             break;
-                    //     }
-
-                    //     EditorGUILayout.Space();
-                    //     EditorGUILayout.PropertyField(this.spAvatarMask, GC_MASK);
-                    //     EditorGUILayout.PropertyField(this.spWeight);
-                    //     EditorGUI.indentLevel--;
-                    // }
-
-                    // EditorGUILayout.Space();
-                    // EditorGUILayout.PropertyField(this.spLayer);
-                    // EditorGUILayout.PropertyField(this.spTransitionTime);
-                    // EditorGUILayout.PropertyField(this.spSpeed);
+                    
 
                     this.serializedObject.ApplyModifiedProperties();
                 }
@@ -465,6 +446,7 @@
                     EditorGUI.indentLevel++;
                     
                     EditorGUILayout.PropertyField(this.spIsKnockUp);
+                    if(this.spIsKnockUp.boolValue) EditorGUILayout.PropertyField(this.spKnockUpType);
                     EditorGUILayout.PropertyField(this.spIsIgnorePrevious);
 
                     EditorGUILayout.PropertyField(this.spIsBlockable);

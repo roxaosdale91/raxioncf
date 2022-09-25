@@ -444,7 +444,7 @@
 
         public void PlayAudio(AudioClip audioClip)
         {
-            if (audioClip == null) return;
+            if (audioClip == null || this.Blades != null && this.Blades[0] == null) return;
 
             Vector3 position = transform.position;
             if (this.Blades != null && this.Blades.Count > 0) position = this.Blades[0].transform.position;
@@ -696,7 +696,8 @@
                 hitLocation,
                 isKnockBack,
                 isKnockedUp,
-                attack.isKnockup
+                attack.isKnockup,
+                attack.knockuptype
             );
 
             // End of Knockup/Knockdown State Assignment
