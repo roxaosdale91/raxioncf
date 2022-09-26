@@ -23,6 +23,11 @@
             Smash
         }
 
+        public enum StunType {
+            Bash,
+            Stab
+        }
+
         public enum Vulnerable
         {
             Vulnerable,
@@ -75,6 +80,7 @@
         public bool isBlockable = true;
         public float pushForce = 0f;
 
+        public bool isStun = false;
         public bool isKnockup = false;
         public bool isIgnorePrevious = false;
 
@@ -88,7 +94,8 @@
         public Interrupt interruptible = Interrupt.Interruptible;
         public Vulnerable vulnerability = Vulnerable.Vulnerable;
         public Posture posture = Posture.Steady;
-        public KnockUpType knockuptype = KnockUpType.Regular;
+        public Melee.StatusProperties.StatusTypes knockuptype = Melee.StatusProperties.StatusTypes.Knockup;
+        public Melee.StatusProperties.StatusTypes stuntype = Melee.StatusProperties.StatusTypes.Stun;
 
         public AnimationCurve attackPhase = new AnimationCurve(
             new Keyframe(0.00f, 0f),

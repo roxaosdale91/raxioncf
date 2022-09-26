@@ -11,6 +11,48 @@
     using GameCreator.Pool;
     using System.Threading.Tasks;
 
+    public enum StatusAilments {
+        STUN,
+        KNOCKUP
+    }
+    
+    public interface IStatusProperty {
+        public StatusAilments GetStatus();
+        public void SetStatus(StatusAilments status);
+        public void SetActiveType(StatusProperties.StatusTypes statusType);
+
+        public StatusProperties.StatusTypes GetActiveType();
+    }
+
+    public class StatusProperties: IStatusProperty {
+        private StatusAilments statusAilment;
+        private StatusTypes activeType;
+
+        public enum StatusTypes {
+            Knockup,
+            Smash,
+            Stun,
+            Stab
+        }
+
+        public StatusAilments GetStatus() {
+            return this.statusAilment;
+        }
+
+        public void SetStatus(StatusAilments status) {
+            this.statusAilment = status;
+        }
+    
+        
+        public void SetActiveType(StatusProperties.StatusTypes statusType){
+            this.activeType = statusType;
+        }
+
+        public StatusProperties.StatusTypes GetActiveType() {
+            return this.activeType;
+        }
+    }
+
     [RequireComponent(typeof(Character))]
     [AddComponentMenu("Game Creator/Melee/Character Melee")]
     public class CharacterMelee : TargetMelee
@@ -544,8 +586,8 @@
         protected virtual void OnDrawWeapon()
         { }
 
+        
         // CALLBACK METHODS: ----------------------------------------------------------------------
-
         public HitResult OnReceiveAttack(CharacterMelee attacker, MeleeClip attack, BladeComponent blade)
         {
 
@@ -652,6 +694,7 @@
 
             bool isKnockBack = this.Poise <= float.Epsilon;
             bool isKnockUp = attack.isKnockup;
+            bool isStun = attack.isStun;
 
             if(attackAngleV > 90 + 30)
             {
@@ -672,14 +715,25 @@
             bool isKnockedDown = this.Character.IsKnockedDown();
             bool isKnockedUp = this.Character.isKnockedUp();
 
+            StatusProperties statusProperties = new StatusProperties();
+
             if (isKnockBack)
             {
                 this.Character.UpdateLocomotionState(Character.CharacterStatus.IsKnockedDown);
+
                 melee.SetInvincibility(5.0f);
             }
             else if (isKnockUp)
             {
                 this.Character.UpdateLocomotionState(Character.CharacterStatus.isKnockedUp);
+                // statusType = attack.knockuptype;
+                statusProperties.SetStatus(StatusAilments.KNOCKUP);
+                statusProperties.SetActiveType(attack.knockuptype);
+            }
+            else if(isStun){
+                this.Character.UpdateLocomotionState(Character.CharacterStatus.IsStunned);
+                statusProperties.SetStatus(StatusAilments.STUN);
+                statusProperties.SetActiveType(attack.stuntype);
             }
 
             isKnockedUp = this.Character.isKnockedUp();
@@ -689,6 +743,8 @@
                 this.Character.UpdateLocomotionState(Character.CharacterStatus.isKnockedUp);
             }
 
+            
+
             #endregion
 
             MeleeClip hitReaction = this.currentWeapon.GetHitReaction(
@@ -696,8 +752,7 @@
                 hitLocation,
                 isKnockBack,
                 isKnockedUp,
-                attack.isKnockup,
-                attack.knockuptype
+                statusProperties
             );
 
             // End of Knockup/Knockdown State Assignment
@@ -799,3 +854,5 @@
         }
     }
 }
+
+

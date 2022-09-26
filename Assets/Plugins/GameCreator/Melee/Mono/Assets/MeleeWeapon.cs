@@ -129,39 +129,43 @@
             return instances;
         }
 
-        public MeleeClip GetHitReaction(bool isGrounded, HitLocation location, bool isKnockback, bool isKnockedUp, bool isAttackKnockup, 
-                MeleeClip.KnockUpType knockuptype)
+        public MeleeClip GetHitReaction(
+            bool isGrounded, HitLocation location, 
+            bool isKnockback, 
+            bool isKnockedUp,
+            StatusProperties statusProperties)
         {
             int index;
             MeleeClip meleeClip = null;
             List<MeleeClip> hitReactionList;
 
-            if(isAttackKnockup)  // Use index 1 always for knockup
-            {
-                index = UnityEngine.Random.Range(0, this.knockupReaction.Count - 1);
-                if (this.knockupReaction.Count != 1 && index == this.prevRandomHit) index++;
-                this.prevRandomHit = index;
+            bool isFront = this.GetHitLocation(location);
 
-                bool isFront = this.GetHitLocation(location);
-
-                switch(knockuptype) {
-                    case MeleeClip.KnockUpType.Regular:
-                        if(isFront) {
-                            meleeClip = this.knockupReaction[0];           
-                        } else {
-                            meleeClip = this.knockupReaction[1];
-                        }
-                        break;
-                    case MeleeClip.KnockUpType.Smash:
-                        if(isFront) {
-                                meleeClip = this.knockupReaction[2];           
+            switch(statusProperties.GetStatus()) {
+                case StatusAilments.KNOCKUP:
+                    switch(statusProperties.GetActiveType()) {
+                        case StatusProperties.StatusTypes.Knockup:
+                            if(isFront) {
+                                meleeClip = this.knockupReaction[0];           
                             } else {
-                                meleeClip = this.knockupReaction[3];
+                                meleeClip = this.knockupReaction[1];
                             }
-                        break;
-                }
+                            break;
+                        case StatusProperties.StatusTypes.Smash:
+                            if(isFront) {
+                                    meleeClip = this.knockupReaction[2];           
+                                } else {
+                                    meleeClip = this.knockupReaction[3];
+                                }
+                            break;
+                    }
+                    
+                    return meleeClip;
+                    break;
+                
+                case StatusAilments.STUN:
+                    break;
 
-                return meleeClip;
             }
             
             if (isKnockback) // Use index 0 always for knockback

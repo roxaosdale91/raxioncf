@@ -117,7 +117,8 @@
 
 
 
-
+        private SerializedProperty spIsStun;
+        private SerializedProperty spStunType;
         private SerializedProperty spIsKnockUp;
         private SerializedProperty spKnockUpType;
         private SerializedProperty spIsIgnorePrevious;
@@ -179,23 +180,17 @@
 
             this.spAttackPhase = serializedObject.FindProperty("attackPhase");
 
+            // STUN
+            this.spIsStun = this.serializedObject.FindProperty("isStun");
+            this.spStunType = this.serializedObject.FindProperty("stuntype");
+
+            // KNOCKUP
             this.spIsKnockUp = this.serializedObject.FindProperty("isKnockup");
             this.spKnockUpType = this.serializedObject.FindProperty("knockuptype");
+
             this.spIsIgnorePrevious = this.serializedObject.FindProperty("isIgnorePrevious");
-
-
-            // Knock up Handler
-            // this.spCharacter = this.serializedObject.FindProperty("character");
-            // this.spAction = this.serializedObject.FindProperty("action");
-            // this.spLayer = this.serializedObject.FindProperty("layer");
-
-            // this.spState = this.serializedObject.FindProperty("state");
+            
             this.spStateAsset = this.serializedObject.FindProperty("stateEndAsset");
-            // this.spStateClip = this.serializedObject.FindProperty("stateClip");
-
-            // this.spWeight = this.serializedObject.FindProperty("weight");
-            // this.spTransitionTime = this.serializedObject.FindProperty("transitionTime");
-            // this.spSpeed = this.serializedObject.FindProperty("speed");
 
             if (!TEX_PREVIEW_ACCEPT) TEX_PREVIEW_ACCEPT = MakeTexture(Color.green, 0.25f);
             if (!TEX_PREVIEW_REJECT) TEX_PREVIEW_REJECT = MakeTexture(Color.red, 0.25f);
@@ -301,6 +296,9 @@
 
             if (this.spIsAttack.boolValue)
             {
+                if(this.spIsStun.boolValue) this.spIsKnockUp.boolValue = false;
+                if(this.spIsKnockUp.boolValue) this.spIsStun.boolValue = false;
+
                 EditorGUILayout.Space();
                 this.PaintTimeline();
 
@@ -445,6 +443,8 @@
                     EditorGUI.BeginDisabledGroup(!this.spIsAttack.boolValue);
                     EditorGUI.indentLevel++;
                     
+                    EditorGUILayout.PropertyField(this.spIsStun);
+                    if(this.spIsStun.boolValue) EditorGUILayout.PropertyField(this.spStunType);
                     EditorGUILayout.PropertyField(this.spIsKnockUp);
                     if(this.spIsKnockUp.boolValue) EditorGUILayout.PropertyField(this.spKnockUpType);
                     EditorGUILayout.PropertyField(this.spIsIgnorePrevious);
